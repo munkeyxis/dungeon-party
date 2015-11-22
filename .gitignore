@@ -1,0 +1,4 @@
+node_modules
+characters.json
+public/node_modules
+public/dist

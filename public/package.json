@@ -1,0 +1,15 @@
+{
+  "name": "dnd-character-sheet",
+  "version": "1.0.0",
+  "description": "An AngularJS DnD Character Sheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Stevens",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-ui-router": "^0.2.15"
+  }
+}
