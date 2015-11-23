@@ -23,7 +23,7 @@ angular.module('characterSheet')
 		})
 		.state('characterEditor', {
 			url: '/character-editor',
-			template: '<name-editor></name-editor>'
+			template: '<character-editor></character-editor>'
 		})
 		.state('tableTop', {
 			url: '/table-top',

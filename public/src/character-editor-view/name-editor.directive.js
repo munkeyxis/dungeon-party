@@ -6,8 +6,8 @@
         .directive('nameEditor', nameEditor);
 
     var template = `
-        <input type="text" ng-model="nameEditor.name">
-        <button ng-click="nameEditor.save()">Save</button>
+        <label>Character Name:</label>
+        <input type="text" ng-model="nameEditor.name.name">
     `;
 
     /* @ngInject */
@@ -25,20 +25,9 @@
     }
 
     /* @ngInject */
-    function NameEditorController($http, $log) {
+    function NameEditorController(characterModel) {
         const vm = this;
 
-        this.name = "Enter Name";
-        this.save = () => {
-            $http({
-            url: 'http://localhost:3000/save-character',
-            method: 'POST',
-            dataType: 'json',
-            data: {name: vm.name},
-            headers: {'Content-Type': 'application/json'}})
-                .then(response => {
-                    $log.info('save response', response);
-                });
-        };
+        vm.name = characterModel.getName();
     }
 })();

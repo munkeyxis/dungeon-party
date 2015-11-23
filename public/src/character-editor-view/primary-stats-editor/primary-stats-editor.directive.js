@@ -3,21 +3,21 @@
 
     angular
         .module('characterSheet')
-        .directive('primaryStats', primaryStats);
+        .directive('primaryStatsEditor', primaryStatsEditor);
 
     var template = `
-        <primary-stat 
+        <primary-stat-editor 
             stat-obj="stat" 
-            ng-repeat="stat in primaryStats.stats">
-        </primary-stat>
+            ng-repeat="stat in primaryStatsEditor.stats">
+        </primary-stat-editor>
     `;
 
     /* @ngInject */
-    function primaryStats() {
+    function primaryStatsEditor() {
         var directive = {
             bindToController: true,
-            controller: PrimaryStatsController,
-            controllerAs: 'primaryStats',
+            controller: PrimaryStatsEditorController,
+            controllerAs: 'primaryStatsEditor',
             restrict: 'E',
             template: template
         };
@@ -25,7 +25,7 @@
     }
 
     /* @ngInject */
-    function PrimaryStatsController(characterModel) {
+    function PrimaryStatsEditorController(characterModel) {
     	const vm = this;
 
         vm.stats = characterModel.getStats();
