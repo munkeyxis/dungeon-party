@@ -7,8 +7,13 @@
 
     var template = `
     	<name-editor></name-editor>
-    	<primary-stats-editor></primary-stats-editor>
-    	<save-character-button></save-character-button>
+    	<primary-stat-editor 
+            stat-obj="stat" 
+            ng-repeat="stat in characterEditor.character.stats">
+        </primary-stat-editor>
+    	<save-character-button 
+            character-model="characterEditor.character">
+        </save-character-button>
     `;
 
     /* @ngInject */
@@ -26,7 +31,17 @@
     }
 
     /* @ngInject */
-    function CharacterEditorController() {
+    function CharacterEditorController(webServices) {
+        const vm = this;
 
+        activate();
+
+        ////////////////
+
+        function activate() {
+            webServices.getCharacter().then((character) => {
+                vm.character = character;
+            });
+        }
     }
 })();

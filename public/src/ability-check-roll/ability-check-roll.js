@@ -28,12 +28,12 @@
     }
 
     /* @ngInject */
-    function AbilityCheckRollController(socket, characterModel, abilityCheckRoller) {
+    function AbilityCheckRollController(socket, abilityCheckRoller) {
     	const vm = this;
     	const min = 1;
     	const max = 20;
 
-        vm.proficiencyBonus = characterModel.getProficiencyBonus();
+        vm.proficiencyBonus = 2; // temp
 
     	vm.rollAttack = () => {
             let attackRollResults = abilityCheckRoller.rollAbilityCheck(vm.abilityMod, vm.proficiencyBonus);

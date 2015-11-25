@@ -6,7 +6,7 @@
         .factory('webServices', webServices);
 
     /* @ngInject */
-    function webServices($http, $log, characterModel) {
+    function webServices($http, $log) {
         var service = {
             saveCharacter: saveCharacter,
             getCharacter: getCharacter
@@ -15,12 +15,12 @@
 
         ////////////////
 
-        function saveCharacter() {
+        function saveCharacter(character) {
         	$http({
 	            url: 'http://localhost:3000/save-character',
 	            method: 'POST',
 	            dataType: 'json',
-	            data: characterModel.character,
+	            data: character,
 	            headers: {'Content-Type': 'application/json'}
 	        })
             .then(response => {
@@ -34,7 +34,7 @@
 				url: 'http://localhost:3000/character-data'
 			})
 			.then(response => {
-				$log.info('got', response);
+				$log.info('getCharacter success', response);
 				return response.data;
 			});
 

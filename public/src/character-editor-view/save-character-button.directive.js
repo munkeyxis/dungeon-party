@@ -17,6 +17,7 @@
             controllerAs: 'saveCharacterButton',
             restrict: 'E',
             scope: {
+                characterModel: '='
             },
             template: template
         };
@@ -28,7 +29,7 @@
     	const vm = this;
 
     	vm.save = () => {
-    		webServices.saveCharacter();
+    		webServices.saveCharacter(vm.characterModel);
     	};
     }
 })();
