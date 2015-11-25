@@ -8,14 +8,12 @@
     var template = `
     	<div class="primary-stat">
 
-    		<label>{{primaryStat.stat.name}}:</label>
+    		<b>{{primaryStat.stat.name}}:</b>
 
-    		<input type="number" min="8"
-    			ng-change="primaryStat.calculateModifier()" 
-				ng-model="primaryStat.stat.value">
+    		{{primaryStat.stat.value}}
 
     		<span class="modifier">
-    			{{primaryStat.stat.modifier}}
+    			Modifier: {{primaryStat.stat.modifier}}
     		</span>
             
         </div>
@@ -25,7 +23,7 @@
     function primaryStat() {
         var directive = {
             bindToController: true,
-            controller: PrimaryStatController,
+            controller: angular.noop,
             controllerAs: 'primaryStat',
             restrict: 'E',
             scope: {
@@ -34,22 +32,5 @@
             template: template
         };
         return directive;
-    }
-
-    /* @ngInject */
-    function PrimaryStatController(modifierCalculator) {
-    	var vm = this;
-
-    	vm.calculateModifier = () => { assignModifier(); };
-
-    	activate();
-
-    	function activate() {
-    		assignModifier();
-    	}
-
-    	function assignModifier() {
-    		vm.stat.modifier = modifierCalculator.calculateModifier(vm.stat.value);
-    	}
     }
 })();
