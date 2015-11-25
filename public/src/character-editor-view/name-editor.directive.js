@@ -7,7 +7,7 @@
 
     var template = `
         <label>Character Name:</label>
-        <input type="text" ng-model="nameEditor.name.name">
+        <input type="text" ng-model="nameEditor.character.name">
     `;
 
     /* @ngInject */
@@ -28,6 +28,6 @@
     function NameEditorController(characterModel) {
         const vm = this;
 
-        vm.name = characterModel.getName();
+        vm.character = characterModel.character;
     }
 })();

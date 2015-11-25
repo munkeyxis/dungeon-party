@@ -8,7 +8,7 @@
     /* @ngInject */
     function characterModel() {
         let character = {
-            name: {name: ''},
+            name: '',
             stats: [
                 { name: "Strength", value: 10, modifier: 0 },
                 { name: "Dexterity", value: 10, modifier: 0 },
