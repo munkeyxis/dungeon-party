@@ -6,6 +6,10 @@
         .directive('characterEditor', characterEditor);
 
     var template = `
+        <character-select 
+            ng-if="!characterEditor.character"
+            character-list="characterEditor.characterList"
+            selected-character="characterEditor.character"></character-select>
     	<name-editor></name-editor>
     	<primary-stat-editor 
             stat-obj="stat" 
@@ -39,8 +43,8 @@
         ////////////////
 
         function activate() {
-            webServices.getCharacter().then((character) => {
-                vm.character = character;
+            webServices.getCharacters().then((result) => {
+                vm.characterList = result;
             });
         }
     }

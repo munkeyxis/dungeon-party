@@ -9,7 +9,7 @@
     function webServices($http, $log) {
         var service = {
             saveCharacter: saveCharacter,
-            getCharacter: getCharacter
+            getCharacters: getCharacters
         };
         return service;
 
@@ -28,13 +28,13 @@
             });
         }
 
-        function getCharacter() {
+        function getCharacters() {
         	let promise = $http({
 				method: 'GET',
 				url: 'http://localhost:3000/character-data'
 			})
 			.then(response => {
-				$log.info('getCharacter success', response);
+				$log.info('getCharacters success', response);
 				return response.data;
 			});
 

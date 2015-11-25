@@ -6,7 +6,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var characters = JSON.parse(fs.readFileSync('characters.json', 'utf8'));
 var defaultCharacter = {
-    name: '',
+    name: 'Name Character',
     stats: [
         { name: "Strength", value: 10, modifier: 0 },
         { name: "Dexterity", value: 10, modifier: 0 },
@@ -29,8 +29,8 @@ app.post('/save-character', function (req, res) {
 });
 
 app.get('/character-data', function(req, res) {
-	console.log('Sending character', characters[0]);
-	res.send(characters[0]);
+	console.log('Sending character', characters);
+	res.send(characters);
 });
 
 server.listen(3000, function() {

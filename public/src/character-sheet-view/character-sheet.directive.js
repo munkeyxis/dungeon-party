@@ -6,6 +6,10 @@
         .directive('characterSheet', characterSheet);
 
     var template = `
+        <character-select 
+            ng-if="!characterSheet.character"
+            character-list="characterSheet.characterList"
+            selected-character="characterSheet.character"></character-select>
     	{{characterSheet.character.name}}
     	<primary-stats 
     		character-stats="characterSheet.character.stats">
@@ -35,8 +39,8 @@
         ////////////////
 
         function activate() {
-        	webServices.getCharacter().then((character) => {
-        		vm.character = character;
+        	webServices.getCharacters().then((result) => {
+        		vm.characterList = result;
         	});
         }
     }
