@@ -19,15 +19,16 @@
             controller: PrimaryStatsController,
             controllerAs: 'primaryStats',
             restrict: 'E',
+            scope: {
+                stats: '=characterStats'
+            },
             template: template
         };
         return directive;
     }
 
     /* @ngInject */
-    function PrimaryStatsController(characterModel) {
+    function PrimaryStatsController() {
     	const vm = this;
-
-        vm.stats = characterModel.getStats();
     }
 })();

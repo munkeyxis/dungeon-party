@@ -6,20 +6,7 @@ angular.module('characterSheet')
 	$stateProvider
 		.state('characterSheet', {
 			url: '/character-sheet',
-			template: '{{characterSheet.name}}<primary-stats></primary-stats>',
-			controller: 'CharacterSheetController',
-			controllerAs: 'characterSheet',
-			resolve: {
-				characterData: ($http, $log) => {
-					return $http({
-						method: 'GET',
-						url: 'http://localhost:3000/character-data'
-					}).then(data => {
-						$log.info('got', data);
-						return data;
-					});
-				}
-			}
+			template: '<character-sheet></character-sheet>'
 		})
 		.state('characterEditor', {
 			url: '/character-editor',

@@ -6,9 +6,9 @@
         .factory('characterModel', characterModel);
 
     /* @ngInject */
-    function characterModel() {
+    function characterModel($log) {
         let character = {
-            name: '',
+            name: 'ga',
             stats: [
                 { name: "Strength", value: 10, modifier: 0 },
                 { name: "Dexterity", value: 10, modifier: 0 },
@@ -24,7 +24,8 @@
             getName: getName,
             getStats: getStats,
             getProficiencyBonus: getProficiencyBonus,
-            character: character
+            character: character,
+            setCharacter: setCharacter
         };
         return service;
 
@@ -40,6 +41,11 @@
 
         function getProficiencyBonus() {
         	return character.proficiencyBonus;
+        }
+
+        function setCharacter(characterData) {
+            character = characterData;
+            $log.info('character set', character);
         }
     }
 })();
