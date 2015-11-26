@@ -14,6 +14,6 @@ angular.module('characterSheet')
 		})
 		.state('tableTop', {
 			url: '/table-top',
-			template: '<roll-display></roll-display>'
+			template: '<table-top></table-top>'
 		});
 });	
