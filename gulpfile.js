@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var less = require('gulp-less');
 
 var srcPaths = {
 	index: './public/src/index.html',
@@ -12,15 +13,22 @@ var srcPaths = {
 		'./node_modules/socket.io-client/socket.io.js',
 		'./public/node_modules/angular/angular.js',
 		'./public/node_modules/angular-ui-router/build/angular-ui-router.js',
-	]
+	],
+	less: './public/src/**/*.less'
 };
 
 var destPaths = {
 	root: './public/dist/',
-	scripts: './public/dist/js/'
+	scripts: './public/dist/js/',
+	styles: './public/dist/styles/'
 };
 
-gulp.task('default', ['moveIndex','concatScripts', 'concatVendorScripts']);
+gulp.task('default', [
+	'moveIndex',
+	'concatScripts', 
+	'concatVendorScripts',
+	'buildStyles'
+]);
 
 gulp.task('moveIndex', function() {
 	return gulp.src(srcPaths.index)
@@ -39,7 +47,15 @@ gulp.task('concatVendorScripts', function() {
 		.pipe(gulp.dest(destPaths.scripts));
 });
 
+gulp.task('buildStyles', function() {
+	return gulp.src(srcPaths.less)
+		.pipe(less())
+		.pipe(concat('styles.css'))
+		.pipe(gulp.dest(destPaths.styles))
+})
+
 gulp.task('watch', function() {
 	gulp.watch(srcPaths.index, ['moveIndex']);
 	gulp.watch(srcPaths.scripts, ['concatScripts']);
+	gulp.watch(srcPaths.less, ['buildStyles']);
 });
