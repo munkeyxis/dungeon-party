@@ -24,6 +24,9 @@
             ability-mod="stat.modifier"
             proficiency-bonus="characterSheet.character.proficiencyBonus"
             ng-repeat-end></ability-check-roll>
+
+        <join-table-button 
+            character-data="characterSheet.character"></join-table-button>
     `;
 
     /* @ngInject */
