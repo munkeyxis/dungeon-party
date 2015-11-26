@@ -20,7 +20,8 @@
             controllerAs: 'abilityCheckRoll',
             restrict: 'E',
             scope: {
-            	abilityMod: '='
+            	abilityMod: '=',
+                proficiencyBonus: '='
             },
             template: template
         };
@@ -32,8 +33,6 @@
     	const vm = this;
     	const min = 1;
     	const max = 20;
-
-        vm.proficiencyBonus = 2; // temp
 
     	vm.rollAttack = () => {
             let attackRollResults = abilityCheckRoller.rollAbilityCheck(vm.abilityMod, vm.proficiencyBonus);
