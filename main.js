@@ -5,18 +5,7 @@ var io = require('socket.io')(server);
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var characters = JSON.parse(fs.readFileSync('characters.json', 'utf8'));
-var defaultCharacter = {
-    name: 'Name Character',
-    stats: [
-        { name: "Strength", value: 10, modifier: 0 },
-        { name: "Dexterity", value: 10, modifier: 0 },
-        { name: "Constitution", value: 10, modifier: 0 },
-        { name: "Intelligence", value: 10, modifier: 0 },
-        { name: "Wisdom", value: 10, modifier: 0 },
-        { name: "Charisma", value: 10, modifier: 0 }
-    ],
-    proficiencyBonus: 2
-};
+var characterModel = require('./model/character-model.js');
 
 app.use(bodyParser.json());
 
@@ -36,9 +25,10 @@ app.get('/character-data', function(req, res) {
 server.listen(3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
-
+	console.log('characterModel', characterModel);
+	
 	if(characters.length === 0) {
-		characters.push(defaultCharacter);
+		characters.push(characterModel.defaultCharacter);
 	}
 
 	console.log('Example app listening at http://%s:%s', host, port);
