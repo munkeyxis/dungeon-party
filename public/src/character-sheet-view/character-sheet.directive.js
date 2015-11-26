@@ -10,10 +10,13 @@
             ng-if="!characterSheet.character"
             character-list="characterSheet.characterList"
             selected-character="characterSheet.character"></character-select>
-    	{{characterSheet.character.name}}
-    	<primary-stats 
-    		character-stats="characterSheet.character.stats">
-    	</primary-stats>
+    	
+        {{characterSheet.character.name}}
+    	
+        <primary-stat 
+            stat-obj="stat" 
+            ng-repeat="stat in characterSheet.character.stats">
+        </primary-stat>
     `;
 
     /* @ngInject */
