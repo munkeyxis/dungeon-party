@@ -51,6 +51,11 @@ io.on('connection', function(socket) {
 		console.log('roll performed: ', data);
 		io.emit('rollResult', data);
 	});
+
+	socket.on('addCharacter', function(data) {
+		console.log('adding character to table', data.name);
+		io.emit('addCharacter', data);
+	});
 });
 
 process.on('SIGINT', function() {
