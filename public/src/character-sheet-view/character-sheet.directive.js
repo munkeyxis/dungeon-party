@@ -11,19 +11,24 @@
             character-list="characterSheet.characterList"
             selected-character="characterSheet.character"></character-select>
     	
-        {{characterSheet.character.name}}
+        <character-name>
+            {{characterSheet.character.name}}
+        </character-name>
 
-        Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}
-    	
-        <primary-stat 
-            stat-obj="stat" 
-            ng-repeat-start="stat in characterSheet.character.stats">
-        </primary-stat>
+        <proficiency-bonus>
+            Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}
+    	</proficiency-bonus>
 
-        <ability-check-roll
-            ability-mod="stat.modifier"
-            proficiency-bonus="characterSheet.character.proficiencyBonus"
-            ng-repeat-end></ability-check-roll>
+        <stat-row ng-repeat="stat in characterSheet.character.stats">
+        
+            <primary-stat 
+                stat-obj="stat"></primary-stat>
+
+            <ability-check-roll
+                ability-mod="stat.modifier"
+                proficiency-bonus="characterSheet.character.proficiencyBonus"></ability-check-roll>
+
+        </stat-row>
 
         <join-table-button 
             character-data="characterSheet.character"></join-table-button>
