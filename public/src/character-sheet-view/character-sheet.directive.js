@@ -12,11 +12,18 @@
             selected-character="characterSheet.character"></character-select>
     	
         {{characterSheet.character.name}}
+
+        Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}
     	
         <primary-stat 
             stat-obj="stat" 
-            ng-repeat="stat in characterSheet.character.stats">
+            ng-repeat-start="stat in characterSheet.character.stats">
         </primary-stat>
+
+        <ability-check-roll
+            ability-mod="stat.modifier"
+            proficiency-bonus="characterSheet.character.proficiencyBonus"
+            ng-repeat-end></ability-check-roll>
     `;
 
     /* @ngInject */
