@@ -7,7 +7,7 @@
 
     var template = `
     	<button ng-click="abilityCheckRoll.rollAttack()">Roll Ability Check</button>
-    	Roll: {{abilityCheckRoll.rollValue}} + StrMod: {{abilityCheckRoll.abilityMod}} +
+    	Roll: {{abilityCheckRoll.rollValue}} + Ability Mod: {{abilityCheckRoll.abilityMod}} +
     	Prof: {{abilityCheckRoll.proficiencyBonus}} = 
     	<b>{{abilityCheckRoll.totalValue}}</b>
     `;
