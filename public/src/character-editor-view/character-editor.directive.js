@@ -10,11 +10,18 @@
             ng-if="!characterEditor.character"
             character-list="characterEditor.characterList"
             selected-character="characterEditor.character"></character-select>
+
     	<name-editor></name-editor>
+
     	<primary-stat-editor 
             stat-obj="stat" 
             ng-repeat="stat in characterEditor.character.stats">
         </primary-stat-editor>
+
+        <skill-row-editor
+            ng-repeat="skill in characterEditor.character.skills"
+            skill-data="skill"></skill-row-editor>
+
     	<save-character-button 
             character-model="characterEditor.character">
         </save-character-button>
