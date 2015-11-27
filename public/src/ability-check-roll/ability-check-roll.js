@@ -21,7 +21,8 @@
             restrict: 'E',
             scope: {
             	abilityMod: '=',
-                proficiencyBonus: '='
+                proficiencyBonus: '=',
+                isProficient: '='
             },
             template: template
         };
