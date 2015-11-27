@@ -14,9 +14,13 @@
 
         ////////////////
 
-        function rollAbilityCheck(abilityMod, proficiencyBonus) {
+        function rollAbilityCheck(abilityMod, proficiencyBonus, isProficient) {
         	const rollResult = rollD20();
-        	const totalResult = rollResult + abilityMod + proficiencyBonus;
+        	let totalResult = rollResult + abilityMod;
+
+            if(isProficient) {
+                totalResult += proficiencyBonus;
+            }
 
         	return {
         		rollResult: rollResult,

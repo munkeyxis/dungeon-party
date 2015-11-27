@@ -7,9 +7,9 @@
 
     var template = `
     	<button ng-click="abilityCheckRoll.rollAttack()">Roll Ability Check</button>
-    	Roll: {{abilityCheckRoll.rollValue}} + Ability Mod: {{abilityCheckRoll.abilityMod}} +
-    	Prof: {{abilityCheckRoll.proficiencyBonus}} = 
-    	<b>{{abilityCheckRoll.totalValue}}</b>
+    	Roll: {{abilityCheckRoll.rollValue}} + Ability Mod: {{abilityCheckRoll.abilityMod}}
+        <span ng-if="abilityCheckRoll.isProficient">+ Prof: {{abilityCheckRoll.proficiencyBonus}}</span>
+        = <b>{{abilityCheckRoll.totalValue}}</b>
     `;
 
     /* @ngInject */
@@ -36,10 +36,14 @@
     	const max = 20;
 
     	vm.rollAttack = () => {
-            let attackRollResults = abilityCheckRoller.rollAbilityCheck(vm.abilityMod, vm.proficiencyBonus);
+            let attackRollResults = abilityCheckRoller.rollAbilityCheck(
+                vm.abilityMod,
+                vm.proficiencyBonus,
+                vm.isProficient
+            );
     		vm.rollValue = attackRollResults.rollResult;
     		vm.totalValue = attackRollResults.totalResult;
             socket.emit('roll', vm.totalValue);
     	};
     }
-})();	
+})();
