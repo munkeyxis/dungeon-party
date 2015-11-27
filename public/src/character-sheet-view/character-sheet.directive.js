@@ -30,9 +30,9 @@
 
         </stat-row>
 
-        <skill-row 
+        <character-skill 
             ng-repeat="skill in characterSheet.character.skills"
-            skill-data="skill"></skill-row>
+            skill-data="skill"></character-skill>
 
         <join-table-button 
             character-data="characterSheet.character"></join-table-button>

@@ -3,18 +3,18 @@
 
     angular
         .module('characterSheet')
-        .directive('skillRow', skillRow);
+        .directive('characterSkill', characterSkill);
 
     var template = `
-    	{{skillRow.skillData.name}}: {{skillRow.skillData.proficient}}
+    	{{characterSkill.skillData.name}}: {{characterSkill.skillData.proficient}}
     `;
 
     /* @ngInject */
-    function skillRow() {
+    function characterSkill() {
         var directive = {
             bindToController: true,
             controller: angular.noop,
-            controllerAs: 'skillRow',
+            controllerAs: 'characterSkill',
             restrict: 'E',
             scope: {
             	skillData: '='
