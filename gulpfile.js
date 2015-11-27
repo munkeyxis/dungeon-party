@@ -5,12 +5,12 @@ var less = require('gulp-less');
 var srcPaths = {
 	index: './public/src/index.html',
 	scripts: [
-		'./public/src/character-sheet.module.js', 
-		'./public/src/**/*.js', 
+		'./public/src/character-sheet.module.js',
+		'./public/src/**/*.js',
 		'!./public/src/socket.io.js'
 	],
 	vendorScripts: [
-		'./node_modules/socket.io-client/socket.io.js',
+		'./node_modules/socket.io/node_modules/socket.io-client/socket.io.js',
 		'./public/node_modules/angular/angular.js',
 		'./public/node_modules/angular-ui-router/build/angular-ui-router.js',
 	],
@@ -25,7 +25,7 @@ var destPaths = {
 
 gulp.task('default', [
 	'moveIndex',
-	'concatScripts', 
+	'concatScripts',
 	'concatVendorScripts',
 	'buildStyles'
 ]);
