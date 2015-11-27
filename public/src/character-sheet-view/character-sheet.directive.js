@@ -30,9 +30,17 @@
 
         </stat-row>
 
-        <character-skill 
-            ng-repeat="skill in characterSheet.character.skills"
-            skill-data="skill"></character-skill>
+        <skill-row ng-repeat="skill in characterSheet.character.skills">
+
+            <character-skill 
+                skill-data="skill"></character-skill>
+
+            <ability-check-roll
+                ability-mod="characterSheet.character.stats[skill.stat].modifier"
+                proficiency-bonus="characterSheet.character.proficiencyBonus"
+                is-proficient="skill.proficient"></ability-check-roll>
+
+        </skill-row>
 
         <join-table-button 
             character-data="characterSheet.character"></join-table-button>
