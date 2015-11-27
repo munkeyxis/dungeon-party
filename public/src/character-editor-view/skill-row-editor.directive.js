@@ -16,7 +16,7 @@
     function skillRowEditor() {
         var directive = {
             bindToController: true,
-            controller: SkillRowEditorController,
+            controller: angular.noop,
             controllerAs: 'skillRowEditor',
             restrict: 'E',
             scope: {
@@ -25,10 +25,5 @@
             template: template
         };
         return directive;
-    }
-
-    /* @ngInject */
-    function SkillRowEditorController() {
-
     }
 })();
