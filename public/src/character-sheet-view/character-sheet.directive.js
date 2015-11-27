@@ -6,11 +6,11 @@
         .directive('characterSheet', characterSheet);
 
     var template = `
-        <character-select 
+        <character-select
             ng-if="!characterSheet.character"
             character-list="characterSheet.characterList"
             selected-character="characterSheet.character"></character-select>
-    	
+
         <character-name>
             {{characterSheet.character.name}}
         </character-name>
@@ -20,8 +20,8 @@
     	</proficiency-bonus>
 
         <stat-row ng-repeat="stat in characterSheet.character.stats">
-        
-            <primary-stat 
+
+            <primary-stat
                 stat-obj="stat"></primary-stat>
 
             <ability-check-roll
@@ -32,7 +32,7 @@
 
         <skill-row ng-repeat="skill in characterSheet.character.skills">
 
-            <character-skill 
+            <character-skill
                 skill-data="skill"></character-skill>
 
             <ability-check-roll
@@ -42,7 +42,7 @@
 
         </skill-row>
 
-        <join-table-button 
+        <join-table-button
             character-data="characterSheet.character"></join-table-button>
     `;
 
