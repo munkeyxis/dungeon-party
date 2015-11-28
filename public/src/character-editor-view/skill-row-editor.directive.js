@@ -6,10 +6,10 @@
         .directive('skillRowEditor', skillRowEditor);
 
     var template = `
-    	<label>{{skillRowEditor.skillData.name}}
-    		<input type="checkbox" 
-    			ng-model="skillRowEditor.skillData.proficient">
-		</label>
+        <label>{{skillRowEditor.skillData.name}}
+            <input type="checkbox" 
+                ng-model="skillRowEditor.skillData.proficient">
+        </label>
     `;
 
     /* @ngInject */
@@ -20,7 +20,7 @@
             controllerAs: 'skillRowEditor',
             restrict: 'E',
             scope: {
-        		skillData: '='
+                skillData: '='
             },
             template: template
         };

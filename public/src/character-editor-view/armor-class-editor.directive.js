@@ -6,10 +6,10 @@
         .directive('armorClassEditor', armorClassEditor);
 
     var template = `
-    	<label>
-    		Armor Class:
-    		<input type="number" ng-model="armorClassEditor.armorClass">
-		</label>
+        <label>
+            Armor Class:
+            <input type="number" ng-model="armorClassEditor.armorClass">
+        </label>
     `;
 
     /* @ngInject */
@@ -20,7 +20,7 @@
             controllerAs: 'armorClassEditor',
             restrict: 'E',
             scope: {
-            	armorClass: '='
+                armorClass: '='
             },
             template: template
         };

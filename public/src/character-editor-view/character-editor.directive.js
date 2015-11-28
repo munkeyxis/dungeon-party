@@ -11,7 +11,7 @@
             character-list="characterEditor.characterList"
             selected-character="characterEditor.character"></character-select>
 
-    	<name-editor></name-editor>
+        <name-editor></name-editor>
 
         <race-editor
             character-race="characterEditor.character.race"></race-editor>
@@ -22,7 +22,7 @@
         <armor-class-editor
             armor-class="characterEditor.character.armorClass"></armor-class-editor>
 
-    	<primary-stat-editor
+        <primary-stat-editor
             stat-obj="stat"
             ng-repeat="stat in characterEditor.character.stats">
         </primary-stat-editor>
@@ -31,7 +31,7 @@
             ng-repeat="skill in characterEditor.character.skills"
             skill-data="skill"></skill-row-editor>
 
-    	<save-character-button
+        <save-character-button
             character-model="characterEditor.character">
         </save-character-button>
     `;

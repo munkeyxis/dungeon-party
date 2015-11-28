@@ -6,15 +6,15 @@
         .directive('primaryStatEditor', primaryStatEditor);
 
     var template = `
-		<label>{{primaryStatEditor.stat.name}}:</label>
+        <label>{{primaryStatEditor.stat.name}}:</label>
 
-		<input type="number" min="8"
-			ng-change="primaryStatEditor.calculateModifier()" 
-			ng-model="primaryStatEditor.stat.value">
+        <input type="number" min="8"
+            ng-change="primaryStatEditor.calculateModifier()" 
+            ng-model="primaryStatEditor.stat.value">
 
-		<span class="modifier">
-			{{primaryStatEditor.stat.modifier}}
-		</span>
+        <span class="modifier">
+            {{primaryStatEditor.stat.modifier}}
+        </span>
     `;
 
     /* @ngInject */
@@ -34,18 +34,18 @@
 
     /* @ngInject */
     function PrimaryStatEditorController(modifierCalculator) {
-    	var vm = this;
+        var vm = this;
 
-    	vm.calculateModifier = () => { assignModifier(); };
+        vm.calculateModifier = () => { assignModifier(); };
 
-    	activate();
+        activate();
 
-    	function activate() {
-    		assignModifier();
-    	}
+        function activate() {
+            assignModifier();
+        }
 
-    	function assignModifier() {
-    		vm.stat.modifier = modifierCalculator.calculateModifier(vm.stat.value);
-    	}
+        function assignModifier() {
+            vm.stat.modifier = modifierCalculator.calculateModifier(vm.stat.value);
+        }
     }
 })();

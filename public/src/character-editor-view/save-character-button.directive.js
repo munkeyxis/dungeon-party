@@ -6,7 +6,7 @@
         .directive('saveCharacterButton', saveCharacterButton);
 
     var template = `
-    	<button ng-click="saveCharacterButton.save()">Save</button>
+        <button ng-click="saveCharacterButton.save()">Save</button>
     `;
 
     /* @ngInject */
@@ -26,10 +26,10 @@
 
     /* @ngInject */
     function SaveCharacterButtonController(webServices) {
-    	const vm = this;
+        const vm = this;
 
-    	vm.save = () => {
-    		webServices.saveCharacter(vm.characterModel);
-    	};
+        vm.save = () => {
+            webServices.saveCharacter(vm.characterModel);
+        };
     }
 })();
