@@ -13,6 +13,9 @@
 
     	<name-editor></name-editor>
 
+        <race-editor
+            character-race="characterEditor.character.race"></race-editor>
+
         <class-editor
             character-class="characterEditor.character.class"></class-editor>
 
