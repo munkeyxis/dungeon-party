@@ -11,13 +11,17 @@
             character-list="characterSheet.characterList"
             selected-character="characterSheet.character"></character-select>
 
-        <character-name>
-            {{characterSheet.character.name}}
-        </character-name>
+        <character-name>{{characterSheet.character.name}}</character-name>
 
-        <proficiency-bonus>
-            Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}
-    	</proficiency-bonus>
+        <character-class>Class: {{characterSheet.character.class}}</character-class>
+
+        <character-race>Race: {{characterSheet.character.race}}</character-race>
+
+        <armor-class>AC: {{characterSheet.character.armorClass}}</armor-class>
+
+        <hit-points>HP: {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}</hit-points>
+
+        <proficiency-bonus>Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}</proficiency-bonus>
 
         <stat-row ng-repeat="stat in characterSheet.character.stats">
 

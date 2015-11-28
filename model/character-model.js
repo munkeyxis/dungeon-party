@@ -9,6 +9,11 @@ var stats = {
 
 exports.defaultCharacter = {
     name: 'Name Character',
+    race: 'Human',
+    class: 'Fighter',
+    armorClass: 10,
+    maxHitPoints: 10,
+    currentHitPoints: 10,
     stats: {
         strength: { name: "Strength", value: 10, modifier: 0 },
         dexterity: { name: "Dexterity", value: 10, modifier: 0 },
