@@ -19,6 +19,9 @@
         <class-editor
             character-class="characterEditor.character.class"></class-editor>
 
+        <armor-class-editor
+            armor-class="characterEditor.character.armorClass"></armor-class-editor>
+
     	<primary-stat-editor
             stat-obj="stat"
             ng-repeat="stat in characterEditor.character.stats">
