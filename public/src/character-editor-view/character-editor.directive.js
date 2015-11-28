@@ -22,6 +22,9 @@
         <armor-class-editor
             armor-class="characterEditor.character.armorClass"></armor-class-editor>
 
+        <max-hit-points-editor
+            max-hit-points="characterEditor.character.maxHitPoints"></max-hit-points-editor>
+
         <primary-stat-editor
             stat-obj="stat"
             ng-repeat="stat in characterEditor.character.stats">
