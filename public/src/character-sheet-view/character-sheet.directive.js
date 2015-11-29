@@ -28,9 +28,16 @@
             <primary-stat
                 stat-obj="stat"></primary-stat>
 
+            <label>
+                Add Proficientcy:
+                <input type="checkbox"
+                    ng-model="stat.isProficient">
+            </label>
+
             <ability-check-roll
                 ability-mod="stat.modifier"
-                proficiency-bonus="characterSheet.character.proficiencyBonus"></ability-check-roll>
+                proficiency-bonus="characterSheet.character.proficiencyBonus"
+                is-proficient="stat.isProficient"></ability-check-roll>
 
         </stat-row>
 
