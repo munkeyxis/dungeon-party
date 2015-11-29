@@ -6,10 +6,9 @@
         .directive('abilityCheckRoll', abilityCheckRoll);
 
     var template = `
-    	<button ng-click="abilityCheckRoll.rollAttack()">Roll Ability Check</button>
-    	Roll: {{abilityCheckRoll.rollValue}} + Ability Mod: {{abilityCheckRoll.abilityMod}}
-        <span ng-if="abilityCheckRoll.isProficient">+ Prof: {{abilityCheckRoll.proficiencyBonus}}</span>
-        = <b>{{abilityCheckRoll.totalValue}}</b>
+    	<button ng-click="abilityCheckRoll.rollAttack()">
+            Roll Ability Check
+        </button>
     `;
 
     /* @ngInject */

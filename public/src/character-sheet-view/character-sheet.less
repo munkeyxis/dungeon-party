@@ -1,16 +1,72 @@
+@import "../../node_modules/bootstrap/less/bootstrap.less";
+
 character-sheet {
 
-	> * {
-		display: block;
-	}
+    > * {
+        display: block;
+    }
 
-	primary-stat, character-skill, ability-check-roll {
-		display: inline-block;
-	}
+    character-summary {
+        .row;
 
-	primary-stat, character-skill {
-		margin: 10px 0;
-		width: 220px;
-	}
+        > * {
+            .col-xs-4;
+        }
+    }
 
+    hit-points {
+        width: 100%;
+        border: 1px solid #000;
+        background: #999;
+        color: #fff;
+        padding: 10px;
+    }
+
+    primary-stat, character-skill, ability-check-roll {
+        
+    }
+
+    primary-stats {
+        stat-row {
+            border: 1px solid #000;
+            background-color: #999;
+            display: inline-block;
+            width: 200px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+
+            > * {
+                display: block;
+            }
+            value-group {
+                > * {
+                    display: block;
+                }
+
+                stat-name {
+                    border-bottom: 1px solid #ccc;
+                    font-size: 1.3em;
+                }
+            }
+
+            button {
+                .btn;
+                .btn-default;
+
+                &.active {
+                    .btn-warning;
+                }
+            }
+
+            ability-check-roll {
+                button {
+                    .btn-primary;
+                    .btn-lg;
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
 }

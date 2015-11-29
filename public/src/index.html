@@ -7,11 +7,13 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 <body>
-    <nav>
-        <a ui-sref="characterSheet">Character Sheet</a>
-        <a ui-sref="characterEditor">Edit Character</a>
-        <a ui-sref="tableTop">Table</a>
-    </nav>
-    <div ui-view></div>
+    <header>
+        <nav>
+            <a ui-sref="characterSheet">Character Sheet</a>
+            <a ui-sref="characterEditor">Edit Character</a>
+            <a ui-sref="tableTop">Table</a>
+        </nav>
+    </header>
+    <main ui-view></main>
 </body>
 </html>

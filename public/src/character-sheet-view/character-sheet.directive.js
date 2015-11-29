@@ -6,43 +6,53 @@
         .directive('characterSheet', characterSheet);
 
     var template = `
+
         <character-select
             ng-if="!characterSheet.character"
             character-list="characterSheet.characterList"
             selected-character="characterSheet.character"></character-select>
 
-        <character-name>{{characterSheet.character.name}}</character-name>
+        <character-summary>
+            <character-name>{{characterSheet.character.name}}</character-name>
+            <character-race>{{characterSheet.character.race}}</character-race>
+            <character-class>{{characterSheet.character.class}}</character-class>
+        </character-summary>
 
-        <character-class>Class: {{characterSheet.character.class}}</character-class>
+        <armor-class>
+            {{characterSheet.character.armorClass}}
+            <label>AC</label>
+        </armor-class>
 
-        <character-race>Race: {{characterSheet.character.race}}</character-race>
-
-        <armor-class>AC: {{characterSheet.character.armorClass}}</armor-class>
-
-        <hit-points>HP: {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}</hit-points>
+        <hit-points>
+            <value>
+                {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}
+            </value>
+            <label>Hit Points</label>
+        </hit-points>
 
         <proficiency-bonus>Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}</proficiency-bonus>
 
-        <stat-row ng-repeat="stat in characterSheet.character.stats">
+        <primary-stats>
+            <stat-row ng-repeat="stat in characterSheet.character.stats">
+                <primary-stat
+                    stat-obj="stat"></primary-stat>
 
-            <primary-stat
-                stat-obj="stat"></primary-stat>
+                <button 
+                    class="proficient-toggle" 
+                    ng-init="stat.isProficient = false"
+                    ng-click="stat.isProficient = !stat.isProficient"
+                    ng-class="{active: stat.isProficient}">
+                    Proficient: {{stat.isProficient}}
+                </button>
 
-            <label>
-                Add Proficiency:
-                <input type="checkbox"
-                    ng-model="stat.isProficient">
-            </label>
-
-            <ability-check-roll
-                ability-mod="stat.modifier"
-                proficiency-bonus="characterSheet.character.proficiencyBonus"
-                is-proficient="stat.isProficient"></ability-check-roll>
-
-        </stat-row>
+                <ability-check-roll
+                    ability-mod="stat.modifier"
+                    proficiency-bonus="characterSheet.character.proficiencyBonus"
+                    is-proficient="stat.isProficient"></ability-check-roll>
+            </stat-row>
+        </primary-stats>
 
         <skill-row ng-repeat="skill in characterSheet.character.skills">
-
             <character-skill
                 skill-data="skill"></character-skill>
 
@@ -50,7 +60,6 @@
                 ability-mod="characterSheet.character.stats[skill.stat].modifier"
                 proficiency-bonus="characterSheet.character.proficiencyBonus"
                 is-proficient="skill.proficient"></ability-check-roll>
-
         </skill-row>
 
         <join-table-button
@@ -80,9 +89,9 @@
         ////////////////
 
         function activate() {
-        	webServices.getCharacters().then((result) => {
-        		vm.characterList = result;
-        	});
+            webServices.getCharacters().then((result) => {
+                vm.characterList = result;
+            });
         }
     }
 })();

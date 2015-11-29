@@ -6,17 +6,13 @@
         .directive('primaryStat', primaryStat);
 
     var template = `
-    	<div class="primary-stat">
-
-    		<b>{{primaryStat.stat.name}}:</b>
-
-    		{{primaryStat.stat.value}}
-
-    		<span class="modifier">
-    			Modifier: {{primaryStat.stat.modifier}}
-    		</span>
-            
-        </div>
+        <value-group>
+            <stat-name>{{primaryStat.stat.name}}</stat-name>
+            <stat-value>{{primaryStat.stat.value}}</stat-value>
+        </value-group>
+        <stat-modifier>
+            Mod: {{primaryStat.stat.modifier}}
+        </stat-modifier>
     `;
 
     /* @ngInject */
