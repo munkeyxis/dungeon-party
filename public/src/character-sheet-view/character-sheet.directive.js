@@ -29,7 +29,7 @@
                 stat-obj="stat"></primary-stat>
 
             <label>
-                Add Proficientcy:
+                Add Proficiency:
                 <input type="checkbox"
                     ng-model="stat.isProficient">
             </label>
