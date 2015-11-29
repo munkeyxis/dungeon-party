@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="characterSheet" class="no-js">
 <head>
-	<script src="js/vendor.js"></script>
-	<script src="js/character-sheet.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script src="js/vendor.js"></script>
+    <script src="js/character-sheet.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 </head>
 <body>
-	<a ui-sref="characterSheet">Character Sheet</a>
-	<a ui-sref="characterEditor">Edit Character</a>
-	<a ui-sref="tableTop">Table</a>
-	<div ui-view></div>
+    <nav>
+        <a ui-sref="characterSheet">Character Sheet</a>
+        <a ui-sref="characterEditor">Edit Character</a>
+        <a ui-sref="tableTop">Table</a>
+    </nav>
+    <div ui-view></div>
 </body>
 </html>

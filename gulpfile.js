@@ -14,6 +14,7 @@ var srcPaths = {
 		'./public/node_modules/angular/angular.js',
 		'./public/node_modules/angular-ui-router/build/angular-ui-router.js',
 	],
+	vendorStyles: './public/node_modules/bootstrap/dist/css/bootstrap.css',
 	less: './public/src/**/*.less'
 };
 
@@ -27,6 +28,7 @@ gulp.task('default', [
 	'moveIndex',
 	'concatScripts',
 	'concatVendorScripts',
+	'moveVendorStyles',
 	'buildStyles'
 ]);
 
@@ -45,6 +47,11 @@ gulp.task('concatVendorScripts', function() {
 	return gulp.src(srcPaths.vendorScripts)
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest(destPaths.scripts));
+});
+
+gulp.task('moveVendorStyles', function() {
+	return gulp.src(srcPaths.vendorStyles)
+		.pipe(gulp.dest(destPaths.styles));
 });
 
 gulp.task('buildStyles', function() {
