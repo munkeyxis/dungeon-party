@@ -7,7 +7,7 @@
 
     var template = `
     	<button ng-click="abilityCheckRoll.rollAttack()">
-            Roll Ability Check
+            {{abilityCheckRoll.text}}
         </button>
     `;
 
@@ -19,6 +19,7 @@
             controllerAs: 'abilityCheckRoll',
             restrict: 'E',
             scope: {
+                buttonText: '=',
             	abilityMod: '=',
                 proficiencyBonus: '=',
                 isProficient: '='
@@ -33,6 +34,8 @@
     	const vm = this;
     	const min = 1;
     	const max = 20;
+
+        vm.text = vm.buttonText || 'Roll Ability Check'
 
     	vm.rollAttack = () => {
             let attackRollResults = abilityCheckRoller.rollAbilityCheck(
