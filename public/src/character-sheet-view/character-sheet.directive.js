@@ -33,23 +33,26 @@
         <proficiency-bonus>Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}</proficiency-bonus>
 
         <primary-stats>
-            <stat-row ng-repeat="stat in characterSheet.character.stats">
-                <primary-stat
-                    stat-obj="stat"></primary-stat>
+            <stat-box-container ng-repeat="stat in characterSheet.character.stats">
+                <stat-box>
+                    <primary-stat
+                        stat-obj="stat"></primary-stat>
 
-                <button 
-                    class="proficient-toggle" 
-                    ng-init="stat.isProficient = false"
-                    ng-click="stat.isProficient = !stat.isProficient"
-                    ng-class="{active: stat.isProficient}">
-                    Proficient: {{stat.isProficient}}
-                </button>
+                    <button 
+                        class="proficient-toggle" 
+                        ng-init="stat.isProficient = false"
+                        ng-click="stat.isProficient = !stat.isProficient"
+                        ng-class="{active: stat.isProficient}">
+                        Proficient: {{stat.isProficient}}
+                    </button>
 
-                <ability-check-roll
-                    ability-mod="stat.modifier"
-                    proficiency-bonus="characterSheet.character.proficiencyBonus"
-                    is-proficient="stat.isProficient"></ability-check-roll>
-            </stat-row>
+                    <ability-check-roll
+                        button-text="stat.name"
+                        ability-mod="stat.modifier"
+                        proficiency-bonus="characterSheet.character.proficiencyBonus"
+                        is-proficient="stat.isProficient"></ability-check-roll>
+                </stat-box>
+            </stat-box-container>
         </primary-stats>
 
         <skill-rows>
