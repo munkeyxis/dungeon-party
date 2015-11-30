@@ -18,19 +18,25 @@
             <character-class>{{characterSheet.character.class}}</character-class>
         </character-summary>
 
-        <armor-class>
-            {{characterSheet.character.armorClass}}
-            <label>AC</label>
-        </armor-class>
+        <survivability-stats>
+            <hit-points>
+                <value>
+                    {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}
+                </value>
+                <label>HP</label>
+            </hit-points>
 
-        <hit-points>
-            <value>
-                {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}
-            </value>
-            <label>Hit Points</label>
-        </hit-points>
+            <armor-class>
+                <value>{{characterSheet.character.armorClass}}</value>
+                <label>AC</label>
+            </armor-class>
+            <proficiency-bonus>
+                <value>{{characterSheet.character.proficiencyBonus}}</value>
+                <label>Proficiency Bonus</label>
+            </proficiency-bonus>
+        </survivability-stats>
 
-        <proficiency-bonus>Proficiency Bonus: {{characterSheet.character.proficiencyBonus}}</proficiency-bonus>
+        
 
         <primary-stats>
             <stat-box-container ng-repeat="stat in characterSheet.character.stats">

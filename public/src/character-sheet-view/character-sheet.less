@@ -17,12 +17,21 @@ character-sheet {
         }
     }
 
-    hit-points {
-        width: 100%;
-        border: 1px solid #000;
-        background: #999;
-        color: #fff;
-        padding: 10px;
+    survivability-stats {
+        > * {
+            display: inline-block;
+            font-size: 1.3em;
+            border: 1px solid #000;
+            background: #999;
+            color: #fff;
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+            text-align: center;
+
+            > * {
+                display: block;
+            }
+        }
     }
 
     button {
