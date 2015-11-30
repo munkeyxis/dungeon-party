@@ -13,7 +13,7 @@
             selected-character="characterSheet.character"></character-select>
 
         <character-summary>
-            <character-name>{{characterSheet.character.name}}</character-name>
+            <character-name>{{characterSheet.character.name}},</character-name>
             <character-race>{{characterSheet.character.race}}</character-race>
             <character-class>{{characterSheet.character.class}}</character-class>
         </character-summary>
