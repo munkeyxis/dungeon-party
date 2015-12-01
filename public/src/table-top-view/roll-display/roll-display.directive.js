@@ -7,7 +7,7 @@
 
     var template = `
     	<roll-total>
-    		Total Rolled: {{rollDisplay.total}}
+    		Total Rolled {{rollDisplay.total}}
     	</roll-total>
     `;
 
