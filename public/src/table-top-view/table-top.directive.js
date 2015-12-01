@@ -6,10 +6,10 @@
         .directive('tableTop', tableTop);
 
     var template = `
-    	<div ng-repeat="character in tableTop.partyCharacters">
-    		{{character.name}}
-    	</div>
-    	<roll-display></roll-display>
+        <character-card 
+            ng-repeat="character in tableTop.partyCharacters"
+            character-data="character"></character-card>
+        <roll-display></roll-display>
     `;
 
     /* @ngInject */
@@ -28,13 +28,13 @@
 
     /* @ngInject */
     function TableTopController($log, socket) {
-    	const vm = this;
+        const vm = this;
 
-    	vm.partyCharacters = [];
+        vm.partyCharacters = [{name:'Player 1', race: 'poop', class: 'peepee', currentHitPoints: 10, maxHitPoints: 10, armorClass: 10}, {name:'Player 2', race: 'poop', class: 'peepee', currentHitPoints: 10, maxHitPoints: 10, armorClass: 10}, {name:'Player 3', race: 'poop', class: 'peepee', currentHitPoints: 10, maxHitPoints: 10, armorClass: 10}, {name:'Player 4', race: 'poop', class: 'peepee', currentHitPoints: 10, maxHitPoints: 10, armorClass: 10}];
 
-    	socket.on('addCharacter', data => {
-    		$log.info('adding character to table', data.name);
-    		vm.partyCharacters.push(data);
-    	});
+        socket.on('addCharacter', data => {
+            $log.info('adding character to table', data.name);
+            vm.partyCharacters.push(data);
+        });
     }
 })();

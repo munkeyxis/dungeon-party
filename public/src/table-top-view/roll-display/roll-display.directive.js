@@ -6,9 +6,9 @@
         .directive('rollDisplay', rollDisplay);
 
     var template = `
-    	<div class='roll-total'>
+    	<roll-total>
     		Total Rolled: {{rollDisplay.total}}
-    	</div>
+    	</roll-total>
     `;
 
     /* @ngInject */
