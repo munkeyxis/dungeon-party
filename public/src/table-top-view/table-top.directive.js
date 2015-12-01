@@ -6,9 +6,11 @@
         .directive('tableTop', tableTop);
 
     var template = `
-        <character-card 
-            ng-repeat="character in tableTop.partyCharacters"
-            character-data="character"></character-card>
+        <player-party>
+            <character-card 
+                ng-repeat="character in tableTop.partyCharacters"
+                character-data="character"></character-card>
+        </player-party>
         <roll-display></roll-display>
     `;
 
