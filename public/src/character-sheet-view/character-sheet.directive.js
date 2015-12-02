@@ -53,6 +53,7 @@
                     </button>
 
                     <ability-check-roll
+                        character-data="characterSheet.character"
                         button-text="stat.name"
                         ability-mod="stat.modifier"
                         proficiency-bonus="characterSheet.character.proficiencyBonus"
@@ -67,6 +68,7 @@
                 ng-repeat="skill in characterSheet.character.skills"
                 ng-class="{active: skill.proficient}">
                 <ability-check-roll
+                    character-data="characterSheet.character"
                     button-text="skill.name"
                     ability-mod="characterSheet.character.stats[skill.stat].modifier"
                     proficiency-bonus="characterSheet.character.proficiencyBonus"

@@ -19,6 +19,7 @@
             controllerAs: 'abilityCheckRoll',
             restrict: 'E',
             scope: {
+                characterData: '=',
                 buttonText: '=',
             	abilityMod: '=',
                 proficiencyBonus: '=',
@@ -45,7 +46,14 @@
             );
     		vm.rollValue = attackRollResults.rollResult;
     		vm.totalValue = attackRollResults.totalResult;
-            socket.emit('roll', vm.totalValue);
+            socket.emit('roll', {
+                characterName: vm.characterData.name,
+                rollValue: vm.rollValue,
+                abilityMod: vm.abilityMod,
+                isProficient: vm.isProficient,
+                proficiencyBonus: vm.proficiencyBonus,
+                total: vm.totalValue
+            });
     	};
     }
 })();
