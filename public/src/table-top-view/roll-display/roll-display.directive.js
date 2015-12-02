@@ -7,7 +7,13 @@
 
     var template = `
         <character-name>{{rollDisplay.data.characterName}}</character-name>
-        <rolled-amount>Rolled: {{rollDisplay.data.rollValue}}</rolled-amount>
+        <rolled-amount
+            ng-class="{crit: rollDisplay.data.rollValue === 20}">
+            Rolled: {{rollDisplay.data.rollValue}}
+            <span ng-if="rollDisplay.data.rollValue === 20">
+                CRITICAL!
+            </span>
+        </rolled-amount>
         <ability-mod>Ability Mod: + {{rollDisplay.data.abilityMod}}</ability-mod>
         <proficiency-bonus ng-if="rollDisplay.data.isProficient">
             Proficiency Bonus: + {{rollDisplay.data.proficiencyBonus}}
