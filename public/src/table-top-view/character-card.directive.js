@@ -7,9 +7,8 @@
 
     var template = `
         <character-summary>
-            <character-name>{{characterCard.characterData.name}},</character-name>
-            <character-race>{{characterCard.characterData.race}}</character-race>
-            <character-class>{{characterCard.characterData.class}}</character-class>
+            <character-name>{{characterCard.characterData.name}}</character-name>
+            <race-class>{{characterCard.characterData.race}} {{characterCard.characterData.class}}</character-race>
         </character-summary>
 
         <survivability-stats>
