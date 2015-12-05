@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var less = require('gulp-less');
+var eslint = require('gulp-eslint');
 
 var srcPaths = {
 	index: './public/src/index.html',
@@ -47,12 +48,18 @@ gulp.task('concatVendorScripts', function() {
 		.pipe(gulp.dest(destPaths.scripts));
 });
 
+gulp.task('lintScripts', function() {
+	return gulp.src(srcPaths.scripts)
+		.pipe(eslint())
+		.pipe(eslint.format());
+});
+
 gulp.task('buildStyles', function() {
 	return gulp.src(srcPaths.less)
 		.pipe(less())
 		.pipe(concat('styles.css'))
 		.pipe(gulp.dest(destPaths.styles))
-})
+});
 
 gulp.task('watch', function() {
 	gulp.watch(srcPaths.index, ['moveIndex']);
