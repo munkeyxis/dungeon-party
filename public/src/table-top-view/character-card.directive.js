@@ -42,8 +42,17 @@
     }
 
     /* @ngInject */
-    function CharacterCardController() {
+    function CharacterCardController($log, socket) {
         const vm = this;
+
+        $log.info('characterData', vm.characterData);
+
+        socket.on('characterHealthUpdated', data => {
+            if(vm.characterData.guid === data.guid) {
+                $log.info('updating character HP');
+                vm.characterData.currentHitPoints = data.hitPoints;
+            } 
+        });
         
     }
 })();

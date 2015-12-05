@@ -21,7 +21,10 @@
         <survivability-stats>
             <hit-points>
                 <value>
-                    {{characterSheet.character.currentHitPoints}}/{{characterSheet.character.maxHitPoints}}
+                    <input type="number" 
+                        ng-change="characterSheet.changeHealth()" 
+                        ng-model="characterSheet.character.currentHitPoints">
+                    /{{characterSheet.character.maxHitPoints}}
                 </value>
                 <label>HP</label>
             </hit-points>
@@ -35,8 +38,6 @@
                 <label>Proficiency Bonus</label>
             </proficiency-bonus>
         </survivability-stats>
-
-        
 
         <primary-stats>
             <stat-box-container ng-repeat="stat in characterSheet.character.stats">
@@ -96,8 +97,15 @@
     }
 
     /* @ngInject */
-    function CharacterSheetController(webServices) {
+    function CharacterSheetController(webServices, socket) {
         var vm = this;
+
+        vm.changeHealth = () => {
+            socket.emit('healthChange', {
+                guid: vm.character.guid,
+                hitPoints: vm.character.currentHitPoints
+            });
+        };
 
         activate();
 
