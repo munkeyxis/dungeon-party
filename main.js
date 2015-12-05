@@ -6,14 +6,18 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var characters = JSON.parse(fs.readFileSync('characters.json', 'utf8'));
 var characterModel = require('./model/character-model.js');
+var crypto = require('crypto');
 
 app.use(bodyParser.json());
 
 app.use(express.static('public/dist'));
 
 app.post('/save-character', function (req, res) {
-	console.log('character:', req.body);
-	characters.push(req.body);
+	var character = req.body;
+	character.guid = generateGuid();
+	console.log('guid is', character.guid);
+	
+	characters[character.guid] = character;
 	res.end("yes");
 });
 
@@ -25,10 +29,14 @@ app.get('/character-data', function(req, res) {
 server.listen(3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
-	console.log('characterModel', characterModel);
+	console.log('characters', characters);
 	
-	if(characters.length === 0) {
-		characters.push(characterModel.defaultCharacter);
+	if(Object.keys(characters).length === 0) {
+		console.log('adding sample character');
+		var sampleCharacter = characterModel.defaultCharacter;
+		sampleCharacter.guid = generateGuid();
+		console.log('guid is', sampleCharacter.guid);
+		characters[sampleCharacter.guid] = characterModel.defaultCharacter;
 	}
 
 	console.log('Example app listening at http://%s:%s', host, port);
@@ -46,7 +54,25 @@ io.on('connection', function(socket) {
 		console.log('adding character to table', data.name);
 		io.emit('addCharacter', data);
 	});
+
+	socket.on('healthChange', function(data) {
+		var character = characters[data.guid];
+		console.log('changing health for', character.name);
+		character.currentHitPoints = data.hitPoints;
+		io.emit('characterHealthUpdated', data);
+	});
+
+	socket.on('disconnect', function() {
+		console.log('user disconnected');
+	});
 });
+
+function generateGuid() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+	    var r = crypto.randomBytes(1)[0]%16|0, v = c == 'x' ? r : (r&0x3|0x8);
+	    return v.toString(16);
+	});
+}
 
 process.on('SIGINT', function() {
 	console.log('saving then shutting down...');
