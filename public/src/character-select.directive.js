@@ -6,11 +6,11 @@
         .directive('characterSelect', characterSelect);
 
     var template = `
-    	<button 
-    		ng-repeat="character in characterSelect.characterList"
-    		ng-click="characterSelect.selectedCharacter = character">
-    		{{character.name}}
-    	</button>
+        <button
+            ng-repeat="character in characterSelect.characterList"
+            ng-click="characterSelect.selectedCharacter = character">
+            {{character.name}}
+        </button>
     `;
 
     /* @ngInject */
@@ -21,8 +21,8 @@
             controllerAs: 'characterSelect',
             restrict: 'E',
             scope: {
-            	characterList: '=',
-            	selectedCharacter: '='
+                characterList: '=',
+                selectedCharacter: '='
             },
             template: template
         };

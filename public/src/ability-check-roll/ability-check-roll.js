@@ -6,7 +6,7 @@
         .directive('abilityCheckRoll', abilityCheckRoll);
 
     var template = `
-    	<button ng-click="abilityCheckRoll.rollAttack()">
+        <button ng-click="abilityCheckRoll.rollAttack()">
             {{abilityCheckRoll.text}}
         </button>
     `;
@@ -21,7 +21,7 @@
             scope: {
                 characterData: '=',
                 buttonText: '=',
-            	abilityMod: '=',
+                abilityMod: '=',
                 proficiencyBonus: '=',
                 isProficient: '='
             },
@@ -32,20 +32,20 @@
 
     /* @ngInject */
     function AbilityCheckRollController(socket, abilityCheckRoller) {
-    	const vm = this;
-    	const min = 1;
-    	const max = 20;
+        const vm = this;
+        const min = 1;
+        const max = 20;
 
-        vm.text = vm.buttonText || 'Roll Ability Check'
+        vm.text = vm.buttonText || 'Roll Ability Check';
 
-    	vm.rollAttack = () => {
+        vm.rollAttack = () => {
             let attackRollResults = abilityCheckRoller.rollAbilityCheck(
                 vm.abilityMod,
                 vm.proficiencyBonus,
                 vm.isProficient
             );
-    		vm.rollValue = attackRollResults.rollResult;
-    		vm.totalValue = attackRollResults.totalResult;
+            vm.rollValue = attackRollResults.rollResult;
+            vm.totalValue = attackRollResults.totalResult;
             socket.emit('roll', {
                 characterName: vm.characterData.name,
                 rollName: vm.buttonText,
@@ -55,6 +55,6 @@
                 proficiencyBonus: vm.proficiencyBonus,
                 total: vm.totalValue
             });
-    	};
+        };
     }
 })();

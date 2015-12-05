@@ -15,7 +15,7 @@
         ////////////////
 
         function calculateModifier(statValue) {
-        	return Math.floor((statValue - 10) / 2);
+            return Math.floor((statValue - 10) / 2);
         }
     }
 })();
