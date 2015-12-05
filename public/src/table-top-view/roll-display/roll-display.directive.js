@@ -7,6 +7,7 @@
 
     var template = `
         <character-name>{{rollDisplay.data.characterName}}</character-name>
+        <roll-type>Roll Type: {{rollDisplay.data.rollName}}</roll-type>
         <rolled-amount
             ng-class="{crit: rollDisplay.data.rollValue === 20, 'crit-miss': rollDisplay.data.rollValue === 1}">
             Rolled: {{rollDisplay.data.rollValue}}

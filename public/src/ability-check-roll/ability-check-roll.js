@@ -48,6 +48,7 @@
     		vm.totalValue = attackRollResults.totalResult;
             socket.emit('roll', {
                 characterName: vm.characterData.name,
+                rollName: vm.buttonText,
                 rollValue: vm.rollValue,
                 abilityMod: vm.abilityMod,
                 isProficient: vm.isProficient,
