@@ -16,29 +16,29 @@
         ////////////////
 
         function saveCharacter(character) {
-        	$http({
-	            url: 'http://localhost:3000/save-character',
-	            method: 'POST',
-	            dataType: 'json',
-	            data: character,
-	            headers: {'Content-Type': 'application/json'}
-	        })
+            $http({
+                url: 'http://localhost:3000/save-character',
+                method: 'POST',
+                dataType: 'json',
+                data: character,
+                headers: {'Content-Type': 'application/json'}
+            })
             .then(response => {
                 $log.info('save response', response);
             });
         }
 
         function getCharacters() {
-        	let promise = $http({
-				method: 'GET',
-				url: 'http://localhost:3000/character-data'
-			})
-			.then(response => {
-				$log.info('getCharacters success', response);
-				return response.data;
-			});
+            let promise = $http({
+                method: 'GET',
+                url: 'http://localhost:3000/character-data'
+            })
+            .then(response => {
+                $log.info('getCharacters success', response);
+                return response.data;
+            });
 
-			return promise;
+            return promise;
         }
     }
 })();

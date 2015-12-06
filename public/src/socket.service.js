@@ -7,8 +7,8 @@
 
     /* @ngInject */
     function socket($rootScope, $log) {
-    	let socket = io.connect('192.168.1.135:3000');
-    	$log.info('socket created');
+        let socket = io.connect('192.168.1.135:3000');
+        $log.info('socket created');
 
         const service = {
             on: on,
@@ -19,27 +19,27 @@
         ////////////////
 
         function on(eventname, callback) {
-    		function wrapper() {
-    			$rootScope.$apply(() => {
-    				callback.apply(socket, arguments);
-    			});
-    		}
+            function wrapper() {
+                $rootScope.$apply(() => {
+                    callback.apply(socket, arguments);
+                });
+            }
 
-    		socket.on(eventname, wrapper);
+            socket.on(eventname, wrapper);
 
-    		return () => {
-    			socket.removeListener(eventname, wrapper);
-    		};
+            return () => {
+                socket.removeListener(eventname, wrapper);
+            };
         }
 
         function emit(eventName, data, callback) {
-        	socket.emit(eventName, data, () => {
-        		$rootScope.$apply(() => {
-        			if(callback) {
-        				callback.apply(socket, arguments);
-        			}
-        		});
-        	});
+            socket.emit(eventName, data, () => {
+                $rootScope.$apply(() => {
+                    if(callback) {
+                        callback.apply(socket, arguments);
+                    }
+                });
+            });
         }
     }
 })();

@@ -25,10 +25,10 @@
         <not-proficient ng-if="!rollDisplay.data.isProficient">
             Not Proficient
         </not-proficient>
-    	<roll-total>
-    		<h3>Total</h3>
+        <roll-total>
+            <h3>Total</h3>
             <h1>{{rollDisplay.data.total}}</h1>
-    	</roll-total>
+        </roll-total>
     `;
 
     /* @ngInject */
@@ -46,11 +46,11 @@
 
     /* @ngInject */
     function RollDisplayController($log, socket) {
-    	const vm = this;
+        const vm = this;
 
-    	socket.on('rollResult', data => {
-    		$log.info('rollResult received', data);
-    		vm.data = data;
-    	});
+        socket.on('rollResult', data => {
+            $log.info('rollResult received', data);
+            vm.data = data;
+        });
     }
 })();

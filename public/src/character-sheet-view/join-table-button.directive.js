@@ -6,9 +6,9 @@
         .directive('joinTableButton', joinTableButton);
 
     var template = `
-    	<button ng-click="joinTableButton.joinTable()">
-    		Join Table
-		</button>
+        <button ng-click="joinTableButton.joinTable()">
+            Join Table
+        </button>
     `;
 
     /* @ngInject */
@@ -19,7 +19,7 @@
             controllerAs: 'joinTableButton',
             restrict: 'E',
             scope: {
-            	characterData: '=' 
+                characterData: '='
             },
             template: template
         };
@@ -28,11 +28,11 @@
 
     /* @ngInject */
     function JoinTableButtonController($log, socket) {
-    	const vm = this;
+        const vm = this;
 
-    	vm.joinTable = () => {
-    		$log.info('adding character to table');
-    		socket.emit('addCharacter', vm.characterData);
-    	};
+        vm.joinTable = () => {
+            $log.info('adding character to table');
+            socket.emit('addCharacter', vm.characterData);
+        };
     }
 })();
