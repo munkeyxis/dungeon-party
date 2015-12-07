@@ -33,8 +33,6 @@
     /* @ngInject */
     function AbilityCheckRollController(socket, abilityCheckRoller) {
         const vm = this;
-        const min = 1;
-        const max = 20;
 
         vm.text = vm.buttonText || 'Roll Ability Check';
 
