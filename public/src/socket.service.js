@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function socket($rootScope, $log) {
-        let socket = io.connect('192.168.1.135:3000');
+        let socket = io.connect('localhost:3000');
         $log.info('socket created');
 
         const service = {
