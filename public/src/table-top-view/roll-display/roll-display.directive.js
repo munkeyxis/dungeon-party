@@ -19,7 +19,7 @@
             </span>
         </rolled-amount>
         <ability-mod>Ability Mod: + {{rollDisplay.data.abilityMod}}</ability-mod>
-        <proficiency-bonus ng-if="rollDisplay.data.isProficient">
+        <proficiency-bonus ng-if="rollDisplay.data.isProficient || rollDisplay.data.saveProficient">
             Proficiency Bonus: + {{rollDisplay.data.proficiencyBonus}}
         </proficiency-bonus>
         <not-proficient ng-if="!rollDisplay.data.isProficient">

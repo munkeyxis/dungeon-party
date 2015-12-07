@@ -9,12 +9,18 @@
         <label>{{primaryStatEditor.stat.name}}:</label>
 
         <input type="number" min="8"
-            ng-change="primaryStatEditor.calculateModifier()" 
+            ng-change="primaryStatEditor.calculateModifier()"
             ng-model="primaryStatEditor.stat.value">
 
         <span class="modifier">
             {{primaryStatEditor.stat.modifier}}
         </span>
+
+        <label>
+            Save Proficient:
+            <input type="checkbox"
+                ng-model="primaryStatEditor.stat.saveProficient">
+        </label>
     `;
 
     /* @ngInject */

@@ -21,8 +21,8 @@
         <survivability-stats>
             <hit-points>
                 <value>
-                    <input type="number" 
-                        ng-change="characterSheet.changeHealth()" 
+                    <input type="number"
+                        ng-change="characterSheet.changeHealth()"
                         ng-model="characterSheet.character.currentHitPoints">
                     /{{characterSheet.character.maxHitPoints}}
                 </value>
@@ -45,8 +45,8 @@
                     <primary-stat
                         stat-obj="stat"></primary-stat>
 
-                    <button 
-                        class="proficient-toggle" 
+                    <button
+                        class="proficient-toggle"
                         ng-init="stat.isProficient = false"
                         ng-click="stat.isProficient = !stat.isProficient"
                         ng-class="{active: stat.isProficient}">
@@ -59,13 +59,20 @@
                         ability-mod="stat.modifier"
                         proficiency-bonus="characterSheet.character.proficiencyBonus"
                         is-proficient="stat.isProficient"></ability-check-roll>
+
+                    <ability-check-roll
+                        character-data="characterSheet.character"
+                        button-text="stat.name + ' Saving Throw'"
+                        ability-mod="stat.modifier"
+                        proficiency-bonus="characterSheet.character.proficiencyBonus"
+                        is-proficient="stat.saveProficient"></ability-check-roll>
                 </stat-box>
             </stat-box-container>
         </primary-stats>
 
         <skill-rows>
 
-            <skill-row 
+            <skill-row
                 ng-repeat="skill in characterSheet.character.skills"
                 ng-class="{active: skill.proficient}">
                 <ability-check-roll
