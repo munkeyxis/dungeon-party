@@ -16,7 +16,7 @@ app.post('/save-character', function (req, res) {
 	var character = req.body;
 	character.guid = generateGuid();
 	console.log('guid is', character.guid);
-	
+
 	characters[character.guid] = character;
 	res.end("yes");
 });
@@ -30,7 +30,7 @@ server.listen(3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('characters', characters);
-	
+
 	if(Object.keys(characters).length === 0) {
 		console.log('adding sample character');
 		var sampleCharacter = characterModel.defaultCharacter;
@@ -60,6 +60,12 @@ io.on('connection', function(socket) {
 		console.log('changing health for', character.name);
 		character.currentHitPoints = data.hitPoints;
 		io.emit('characterHealthUpdated', data);
+	});
+
+	socket.on('displayCastingMod', function(data) {
+		characters[data.guid] = data;
+		console.log('updating character to displayCastingMod', characters[data.guid].name);
+		io.emit('updateCharacterDisplay', data);
 	});
 
 	socket.on('disconnect', function() {

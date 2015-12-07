@@ -46,6 +46,13 @@
                         stat-obj="stat"></primary-stat>
 
                     <button
+                        class="display-spell-casting-modifier"
+                        ng-click="characterSheet.displayCastingMod(stat)"
+                        ng-class="{active: stat.castingModDisplayed}">
+                        Display as Spell Casting Mod
+                    </button>
+
+                    <button
                         class="proficient-toggle"
                         ng-init="stat.isProficient = false"
                         ng-click="stat.isProficient = !stat.isProficient"
@@ -104,7 +111,7 @@
     }
 
     /* @ngInject */
-    function CharacterSheetController(webServices, socket) {
+    function CharacterSheetController($log, webServices, socket) {
         var vm = this;
 
         vm.changeHealth = () => {
@@ -112,6 +119,12 @@
                 guid: vm.character.guid,
                 hitPoints: vm.character.currentHitPoints
             });
+        };
+
+        vm.displayCastingMod = (stat) => {
+            stat.castingModDisplayed = !stat.castingModDisplayed;
+            $log.info('emitting displayCastingMod');
+            socket.emit('displayCastingMod', vm.character);
         };
 
         activate();

@@ -24,6 +24,12 @@
                 <label>AC</label>
             </armor-class>
         </survivability-stats>
+
+        <spell-casting
+            ng-repeat="stat in characterCard.characterData.stats"
+            ng-if="stat.castingModDisplayed">
+            Spell Casting: {{stat.name}}: {{stat.spellCastingValue}}
+        </spell-casting>
     `;
 
     /* @ngInject */
@@ -45,14 +51,29 @@
     function CharacterCardController($log, socket) {
         const vm = this;
 
+        calculateSpellCastingValue();
         $log.info('characterData', vm.characterData);
 
         socket.on('characterHealthUpdated', data => {
             if(vm.characterData.guid === data.guid) {
                 $log.info('updating character HP');
                 vm.characterData.currentHitPoints = data.hitPoints;
-            } 
+            }
         });
-        
+
+        socket.on('updateCharacterDisplay', data => {
+            if(vm.characterData.guid === data.guid) {
+                $log.info('updating character');
+                vm.characterData = data;
+                calculateSpellCastingValue();
+            }
+        });
+
+        function calculateSpellCastingValue() {
+            angular.forEach(vm.characterData.stats, (stat) => {
+                stat.spellCastingValue = 8 + stat.modifier + vm.characterData.proficiencyBonus;
+            });
+        }
+
     }
 })();
