@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var characters = JSON.parse(fs.readFileSync('characters.json', 'utf8'));
 var characterModel = require('./model/character-model.js');
 var crypto = require('crypto');
+var roller = require('./server/roller.js');
 
 app.use(bodyParser.json());
 
@@ -14,6 +15,7 @@ app.use(express.static('public/dist'));
 
 app.post('/submit-roll', function(req, res) {
 	console.log('roll request recieved', req.body);
+	console.log('rolling result', roller.performRoll(req.body));
 	res.end("ok");
 });
 
