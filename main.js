@@ -12,6 +12,11 @@ app.use(bodyParser.json());
 
 app.use(express.static('public/dist'));
 
+app.post('/submit-roll', function(req, res) {
+	console.log('roll request recieved', req.body);
+	res.end("ok");
+});
+
 app.post('/save-character', function (req, res) {
 	var character = req.body;
 	character.guid = generateGuid();

@@ -9,7 +9,8 @@
     function webServices($http, $log) {
         var service = {
             saveCharacter: saveCharacter,
-            getCharacters: getCharacters
+            getCharacters: getCharacters,
+            submitRoll: submitRoll
         };
         return service;
 
@@ -39,6 +40,19 @@
             });
 
             return promise;
+        }
+
+        function submitRoll(data) {
+            $http({
+                url: 'http://localhost:3000/submit-roll',
+                method: 'POST',
+                dataType: 'json',
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            })
+            .then(response => {
+                $log.info('submitRoll response', response);
+            });
         }
     }
 })();
