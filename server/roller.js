@@ -3,10 +3,18 @@ exports.performRoll = function(rollOptions, character) {
 
     total = rollDiceIfNessisary(rollOptions)
     total += addStatModsIfNessisary(rollOptions.statTypes, character.stats);
-    //add proficiency if needed
+    total += addProficiencyIfNessisary(rollOptions.addProficiency, character.proficiencyBonus);
     //add special mods if needed
     return total;
 };
+
+function addProficiencyIfNessisary(addProficiency, profBonus) {
+    if (!addProficiency) { return 0; }
+
+    console.log('adding proficiency bonus', profBonus);
+
+    return profBonus;
+}
 
 function addStatModsIfNessisary(statOptions, characterStats) {
     var total = 0;
