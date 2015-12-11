@@ -15,10 +15,18 @@ app.use(express.static('public/dist'));
 
 app.post('/submit-roll', function(req, res) {
 	console.log('roll request recieved', req.body);
-	var character = characters[req.body.characterGuid];
+
+	var rollOptions = req.body;
+	var character = characters[rollOptions.characterGuid];
+
 	console.log('character rolling', character.name);
-	console.log('rolling result', roller.performRoll(req.body, character));
+
+	var rollResult = roller.performRoll(rollOptions, character)
+	console.log('rolling result', rollResult);
+
 	res.end("ok");
+
+	io.emit('rollResult', rollResult);
 });
 
 app.post('/save-character', function (req, res) {

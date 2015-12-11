@@ -1,12 +1,24 @@
 exports.performRoll = function(rollOptions, character) {
-    var total = 0;
+    var roll = {
+        rollOptions: rollOptions,
+        total: 0
+    };
 
-    total = rollDiceIfNessisary(rollOptions)
-    total += addStatModsIfNessisary(rollOptions.statTypes, character.stats);
-    total += addProficiencyIfNessisary(rollOptions.addProficiency, character.proficiencyBonus);
-    //add special mods if needed
-    return total;
+    roll.total = rollDiceIfNessisary(rollOptions)
+    roll.total += addStatModsIfNessisary(rollOptions.statTypes, character.stats);
+    roll.total += addProficiencyIfNessisary(rollOptions.addProficiency, character.proficiencyBonus);
+    roll.total += addOtherModIfNessisary(rollOptions.otherModValue);
+
+    return roll;
 };
+
+function addOtherModIfNessisary(otherMod) {
+    if(otherMod === 0) { return motherMod; }
+
+    console.log('adding other modifiers', otherMod);
+
+    return otherMod;
+}
 
 function addProficiencyIfNessisary(addProficiency, profBonus) {
     if (!addProficiency) { return 0; }
