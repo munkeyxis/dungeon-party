@@ -10,7 +10,7 @@
             ng-repeat="type in modifierSelection.rollOptions.statTypes"
             ng-click="type.isSelected = !type.isSelected"
             ng-class="{active: type.isSelected}">
-            {{type.name}}
+            {{type.displayName}}
         </button>
     `;
 
@@ -34,22 +34,28 @@
         const vm = this;
         vm.rollOptions.statTypes = [
             {
-                name: 'Str',
+                displayName: 'Str',
+                name: 'strength',
                 isSelected: false
             },{
-                name: 'Dex',
+                displayName: 'Dex',
+                name: 'dexterity',
                 isSelected: false
             },{
-                name: 'Con',
+                displayName: 'Con',
+                name: 'constitution',
                 isSelected: false
             },{
-                name: 'Int',
+                displayName: 'Int',
+                name: 'intelligence',
                 isSelected: false
             },{
-                name: 'Wis',
+                displayName: 'Wis',
+                name: 'wisdom',
                 isSelected: false
             },{
-                name: 'Cha',
+                displayName: 'Cha',
+                name: 'charisma',
                 isSelected: false
             }
         ];

@@ -48,14 +48,16 @@
             controller: DiceRollMenuController,
             controllerAs: 'diceRollMenu',
             restrict: 'E',
-            scope: {},
+            scope: {
+                characterGuid: '='
+            },
             template: template
         };
         return directive;
     }
 
     /* @ngInject */
-    function DiceRollMenuController(webServices) {
+    function DiceRollMenuController($log, webServices) {
         const vm = this;
 
         vm.rollOptions = {
@@ -67,6 +69,8 @@
         vm.submitRoll = submitRoll;
 
         function submitRoll() {
+            vm.rollOptions.characterGuid = vm.characterGuid;
+
             webServices.submitRoll(vm.rollOptions);
         }
 

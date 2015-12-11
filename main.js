@@ -15,7 +15,9 @@ app.use(express.static('public/dist'));
 
 app.post('/submit-roll', function(req, res) {
 	console.log('roll request recieved', req.body);
-	console.log('rolling result', roller.performRoll(req.body));
+	var character = characters[req.body.characterGuid];
+	console.log('character rolling', character.name);
+	console.log('rolling result', roller.performRoll(req.body, character));
 	res.end("ok");
 });
 

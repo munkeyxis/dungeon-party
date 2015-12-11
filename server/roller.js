@@ -2,11 +2,25 @@ exports.performRoll = function(rollOptions, character) {
     var total = 0;
 
     total = rollDiceIfNessisary(rollOptions)
-    //add stat modifier
+    total += addStatModsIfNessisary(rollOptions.statTypes, character.stats);
     //add proficiency if needed
     //add special mods if needed
     return total;
 };
+
+function addStatModsIfNessisary(statOptions, characterStats) {
+    var total = 0;
+
+    statOptions.forEach(function(stat) {
+        if(stat.isSelected) {
+            total += characterStats[stat.name].modifier;
+        }
+    });
+
+    console.log('total added from stats', total);
+
+    return total;
+}
 
 function rollDiceIfNessisary(rollOptions) {
     var total = 0;

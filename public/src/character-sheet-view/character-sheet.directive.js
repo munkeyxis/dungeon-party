@@ -39,7 +39,9 @@
             </proficiency-bonus>
         </survivability-stats>
 
-        <dice-roll-menu></dice-roll-menu>
+        <dice-roll-menu
+            character-guid="characterSheet.character.guid">
+        </dice-roll-menu>
 
         <primary-stats>
             <stat-box-container ng-repeat="stat in characterSheet.character.stats">
