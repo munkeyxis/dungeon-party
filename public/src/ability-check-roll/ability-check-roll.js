@@ -21,7 +21,7 @@
             scope: {
                 characterGuid: '=',
                 buttonText: '=',
-                keyName: '=',
+                statName: '=',
                 isProficient: '='
             },
             template: template
@@ -39,7 +39,7 @@
             characterGuid: vm.characterGuid,
             quantity: 1,
             diceTypes: [{value: 20, isSelected: true}],
-            statTypes: [{name: vm.keyName, isSelected: true}],
+            statTypes: [{name: vm.statName, isSelected: true}],
             otherModValue: 0
         };
 

@@ -67,13 +67,13 @@
                     <ability-check-roll
                         character-guid="characterSheet.character.guid"
                         button-text="value.name"
-                        key-name="key"
+                        stat-name="key"
                         is-proficient="value.isProficient"></ability-check-roll>
 
                     <ability-check-roll
                         character-guid="characterSheet.character.guid"
                         button-text="value.name + ' Saving Throw'"
-                        key-name="key"
+                        stat-name="key"
                         is-proficient="value.saveProficient"></ability-check-roll>
                 </stat-box>
             </stat-box-container>
@@ -87,8 +87,7 @@
                 <ability-check-roll
                     character-guid="characterSheet.character.guid"
                     button-text="skill.name"
-                    ability-mod="characterSheet.character.stats[skill.stat].modifier"
-                    proficiency-bonus="characterSheet.character.proficiencyBonus"
+                    stat-name="skill.stat"
                     is-proficient="skill.proficient"></ability-check-roll>
             </skill-row>
 
