@@ -7,6 +7,8 @@
 
     /* @ngInject */
     function webServices($http, $log) {
+        const urlBase = 'http://localhost:3000';
+        
         var service = {
             saveCharacter: saveCharacter,
             getCharacters: getCharacters,
@@ -15,8 +17,6 @@
         return service;
 
         ////////////////
-
-        const urlBase = 'http://localhost:3000';
 
         function saveCharacter(character) {
             $http({
