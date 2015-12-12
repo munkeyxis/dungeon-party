@@ -44,39 +44,37 @@
         </dice-roll-menu>
 
         <primary-stats>
-            <stat-box-container ng-repeat="stat in characterSheet.character.stats">
+            <stat-box-container ng-repeat="(key, value) in characterSheet.character.stats">
                 <stat-box>
                     <primary-stat
-                        stat-obj="stat"></primary-stat>
+                        stat-obj="value"></primary-stat>
 
                     <button
                         class="display-spell-casting-modifier"
-                        ng-click="characterSheet.displayCastingMod(stat)"
-                        ng-class="{active: stat.castingModDisplayed}">
+                        ng-click="characterSheet.displayCastingMod(value)"
+                        ng-class="{active: value.castingModDisplayed}">
                         Display as Spell Casting Mod
                     </button>
 
                     <button
                         class="proficient-toggle"
-                        ng-init="stat.isProficient = false"
-                        ng-click="stat.isProficient = !stat.isProficient"
-                        ng-class="{active: stat.isProficient}">
-                        Proficient: {{stat.isProficient}}
+                        ng-init="value.isProficient = false"
+                        ng-click="value.isProficient = !value.isProficient"
+                        ng-class="{active: value.isProficient}">
+                        Proficient: {{value.isProficient}}
                     </button>
 
                     <ability-check-roll
-                        character-data="characterSheet.character"
-                        button-text="stat.name"
-                        ability-mod="stat.modifier"
-                        proficiency-bonus="characterSheet.character.proficiencyBonus"
-                        is-proficient="stat.isProficient"></ability-check-roll>
+                        character-guid="characterSheet.character.guid"
+                        button-text="value.name"
+                        key-name="key"
+                        is-proficient="value.isProficient"></ability-check-roll>
 
                     <ability-check-roll
-                        character-data="characterSheet.character"
-                        button-text="stat.name + ' Saving Throw'"
-                        ability-mod="stat.modifier"
-                        proficiency-bonus="characterSheet.character.proficiencyBonus"
-                        is-proficient="stat.saveProficient"></ability-check-roll>
+                        character-guid="characterSheet.character.guid"
+                        button-text="value.name + ' Saving Throw'"
+                        key-name="key"
+                        is-proficient="value.saveProficient"></ability-check-roll>
                 </stat-box>
             </stat-box-container>
         </primary-stats>
@@ -87,7 +85,7 @@
                 ng-repeat="skill in characterSheet.character.skills"
                 ng-class="{active: skill.proficient}">
                 <ability-check-roll
-                    character-data="characterSheet.character"
+                    character-guid="characterSheet.character.guid"
                     button-text="skill.name"
                     ability-mod="characterSheet.character.stats[skill.stat].modifier"
                     proficiency-bonus="characterSheet.character.proficiencyBonus"

@@ -19,10 +19,9 @@
             controllerAs: 'abilityCheckRoll',
             restrict: 'E',
             scope: {
-                characterData: '=',
+                characterGuid: '=',
                 buttonText: '=',
-                abilityMod: '=',
-                proficiencyBonus: '=',
+                keyName: '=',
                 isProficient: '='
             },
             template: template
@@ -31,28 +30,23 @@
     }
 
     /* @ngInject */
-    function AbilityCheckRollController(socket, abilityCheckRoller) {
+    function AbilityCheckRollController(webServices) {
         const vm = this;
 
         vm.text = vm.buttonText || 'Roll Ability Check';
 
+        vm.rollOptions = {
+            characterGuid: vm.characterGuid,
+            quantity: 1,
+            diceTypes: [{value: 20, isSelected: true}],
+            statTypes: [{name: vm.keyName, isSelected: true}],
+            otherModValue: 0
+        };
+
         vm.rollAttack = () => {
-            let attackRollResults = abilityCheckRoller.rollAbilityCheck(
-                vm.abilityMod,
-                vm.proficiencyBonus,
-                vm.isProficient
-            );
-            vm.rollValue = attackRollResults.rollResult;
-            vm.totalValue = attackRollResults.totalResult;
-            socket.emit('roll', {
-                characterName: vm.characterData.name,
-                rollName: vm.buttonText,
-                rollValue: vm.rollValue,
-                abilityMod: vm.abilityMod,
-                isProficient: vm.isProficient,
-                proficiencyBonus: vm.proficiencyBonus,
-                total: vm.totalValue
-            });
+            vm.rollOptions.addProficiency = vm.isProficient;
+
+            webServices.submitRoll(vm.rollOptions);
         };
     }
 })();
