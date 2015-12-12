@@ -13,7 +13,7 @@ exports.performRoll = function(rollOptions, character) {
 };
 
 function addOtherModIfNessisary(otherMod) {
-    if(otherMod === 0) { return motherMod; }
+    if(otherMod === 0) { return otherMod; }
 
     console.log('adding other modifiers', otherMod);
 
