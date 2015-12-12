@@ -133,9 +133,8 @@
         ////////////////
 
         function activate() {
-            webServices.getCharacters().then((result) => {
-                vm.characterList = result;
-            });
+            webServices.getCharacters()
+                .then(result => { vm.characterList = result; });
         }
     }
 })();
