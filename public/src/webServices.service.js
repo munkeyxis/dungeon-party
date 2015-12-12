@@ -16,9 +16,11 @@
 
         ////////////////
 
+        const urlBase = 'http://localhost:3000';
+
         function saveCharacter(character) {
             $http({
-                url: 'http://localhost:3000/save-character',
+                url: `${urlBase}/save-character`,
                 method: 'POST',
                 dataType: 'json',
                 data: character,
@@ -32,7 +34,7 @@
         function getCharacters() {
             let promise = $http({
                 method: 'GET',
-                url: 'http://localhost:3000/character-data'
+                url: `${urlBase}/character-data`
             })
             .then(response => {
                 $log.info('getCharacters success', response);
@@ -44,7 +46,7 @@
 
         function submitRoll(data) {
             $http({
-                url: 'http://localhost:3000/submit-roll',
+                url: `${urlBase}/submit-roll`,
                 method: 'POST',
                 dataType: 'json',
                 data: data,
