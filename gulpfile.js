@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var less = require('gulp-less');
 var eslint = require('gulp-eslint');
+var babel = require('gulp-babel');
 
 var srcPaths = {
 	index: './public/src/index.html',
@@ -38,6 +39,7 @@ gulp.task('moveIndex', function() {
 
 gulp.task('concatScripts', function() {
 	return gulp.src(srcPaths.scripts)
+		.pipe(babel())
 		.pipe(concat('character-sheet.js'))
 		.pipe(gulp.dest(destPaths.scripts));
 });
