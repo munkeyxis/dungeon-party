@@ -14,12 +14,12 @@
             roll-options="diceRollMenu.rollOptions">
         </modifier-selection>
 
-        <label>
+        <button
+            ng-model="diceRollMenu.rollOptions.addProficiency"
+            ng-click="diceRollMenu.rollOptions.addProficiency = !diceRollMenu.rollOptions.addProficiency"
+            ng-class="{active: diceRollMenu.rollOptions.addProficiency}">
             Add Proficiency
-            <input
-                type="checkbox"
-                ng-model="diceRollMenu.rollOptions.addProficiency">
-        </label>
+        </button>
 
         <label>
             Total of any other modifiers
