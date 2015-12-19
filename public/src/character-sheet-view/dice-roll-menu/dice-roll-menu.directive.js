@@ -6,13 +6,6 @@
         .directive('diceRollMenu', diceRollMenu);
 
     const template = `
-        <label>
-            Number of Dice
-            <input
-                type="number"
-                ng-model="diceRollMenu.rollOptions.quantity">
-        </label>
-
         <dice-type-selection
             roll-options="diceRollMenu.rollOptions">
         </dice-type-selection>
@@ -61,7 +54,6 @@
         const vm = this;
 
         vm.rollOptions = {
-            quantity: 0,
             addProficiency: false,
             otherModValue: 0
         };

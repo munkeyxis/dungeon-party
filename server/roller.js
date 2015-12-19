@@ -47,23 +47,23 @@ function rollDiceIfNessisary(rollOptions) {
 
     rollOptions.diceTypes.forEach(function(die) {
         if(die.isSelected) {
-            total += rollAllDice(die, rollOptions.quantity);
+            total += rollAllDice(die);
         }
     });
 
     return total;
 }
 
-function rollAllDice(dice, quantity) {
+function rollAllDice(die) {
     var total = 0;
-    dice.rollResults = [];
+    die.rollResults = [];
 
-    for(var i = 0; i < quantity; i++) {
-        var rollResult = rollDie(dice.value);
-        dice.rollResults.push(rollResult);
+    for(var i = 0; i < die.quantity; i++) {
+        var rollResult = rollDie(die.value);
+        die.rollResults.push(rollResult);
         total += rollResult;
     }
-    console.log('total of ' + quantity + ' D' + dice.value + ' rolls', total);
+    console.log('total of ' + die.quantity + ' D' + die.value + ' rolls', total);
 
     return total;
 }

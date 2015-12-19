@@ -6,12 +6,16 @@
         .directive('diceTypeSelection', diceTypeSelection);
 
     const template = `
-        <button
-            ng-repeat="type in diceTypeSelection.rollOptions.diceTypes"
-            ng-click="type.isSelected = !type.isSelected"
-            ng-class="{active: type.isSelected}">
-            D{{type.value}}
-        </button>
+        <die-option 
+            ng-repeat="type in diceTypeSelection.rollOptions.diceTypes">
+            <button
+                ng-click="type.isSelected = !type.isSelected"
+                ng-class="{active: type.isSelected}">
+                D{{type.value}}
+            </button>
+            <input type="number"
+                ng-model="type.quantity">
+        </die-option>
     `;
 
     /* @ngInject */
@@ -35,21 +39,27 @@
         vm.rollOptions.diceTypes = [
             {
                 value: 4,
+                quantity: 0,
                 isSelected: false
             },{
                 value: 6,
+                quantity: 0,
                 isSelected: false
             },{
                 value: 8,
+                quantity: 0,
                 isSelected: false
             },{
                 value: 10,
+                quantity: 0,
                 isSelected: false
             },{
                 value: 12,
+                quantity: 0,
                 isSelected: false
             },{
                 value: 20,
+                quantity: 0,
                 isSelected: false
             }
         ];
