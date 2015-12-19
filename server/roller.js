@@ -47,7 +47,8 @@ function rollDiceIfNessisary(rollOptions) {
 
     rollOptions.diceTypes.forEach(function(die) {
         if(die.isSelected) {
-            total += rollAllDice(die, rollOptions.quantity);
+            die.rollResult = rollAllDice(die, rollOptions.quantity);
+            total += die.rollResult;
         }
     });
 
