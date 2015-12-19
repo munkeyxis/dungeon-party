@@ -13,7 +13,8 @@
             <die-type 
                 ng-repeat="die in rollDisplay.data.rollOptions.diceTypes"
                 ng-if="die.isSelected">
-                {{rollDisplay.data.rollOptions.quantity}}D{{die.value}} ({{die.rollResult}})
+                {{rollDisplay.data.rollOptions.quantity}}D{{die.value}} 
+                (<roll-result ng-repeat="result in die.rollResults track by $index">{{result}}, </roll-result>), 
             </die-type>
         </roll-type>
         <rolled-amount

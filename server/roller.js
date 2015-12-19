@@ -47,8 +47,7 @@ function rollDiceIfNessisary(rollOptions) {
 
     rollOptions.diceTypes.forEach(function(die) {
         if(die.isSelected) {
-            die.rollResult = rollAllDice(die, rollOptions.quantity);
-            total += die.rollResult;
+            total += rollAllDice(die, rollOptions.quantity);
         }
     });
 
@@ -57,9 +56,12 @@ function rollDiceIfNessisary(rollOptions) {
 
 function rollAllDice(dice, quantity) {
     var total = 0;
+    dice.rollResults = [];
 
     for(var i = 0; i < quantity; i++) {
-        total += rollDie(dice.value);
+        var rollResult = rollDie(dice.value);
+        dice.rollResults.push(rollResult);
+        total += rollResult;
     }
     console.log('total of ' + quantity + ' D' + dice.value + ' rolls', total);
 
