@@ -1,9 +1,14 @@
 @import "../../../node_modules/bootstrap/less/bootstrap.less";
 
 dice-roll-menu {
+    border: 1px solid #000;
+    padding: 20px;
+    margin-bottom: 15px;
+
     dice-type-selection {
         display: block;
-        
+        margin-bottom: 15px;
+
         die-option {
             display: inline-block;
             margin-right: 30px;
@@ -15,6 +20,12 @@ dice-roll-menu {
             input {
                 width: 50px;
             }
+        }
+    }
+
+    modifier-selection {
+        button {
+            margin-right: 30px;
         }
     }
 }
