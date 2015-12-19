@@ -11,7 +11,8 @@
         </character-name>
         <roll-type>Rolled: 
             <die-type 
-                ng-repeat="die in rollDisplay.data.rollOptions.diceTypes">
+                ng-repeat="die in rollDisplay.data.rollOptions.diceTypes"
+                ng-if="die.isSelected">
                 {{rollDisplay.data.rollOptions.quantity}}D{{die.value}}
             </die-type>
         </roll-type>
