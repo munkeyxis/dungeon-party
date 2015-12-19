@@ -17,16 +17,6 @@
                 (<roll-result ng-repeat="result in die.rollResults track by $index">{{result}}, </roll-result>), 
             </die-type>
         </roll-type>
-        <rolled-amount
-            ng-class="{crit: rollDisplay.data.rollValue === 20, 'crit-miss': rollDisplay.data.rollValue === 1}">
-            Rolled: {{rollDisplay.data.rollValue}}
-            <span ng-if="rollDisplay.data.rollValue === 20">
-                CRITICAL!
-            </span>
-            <span ng-if="rollDisplay.data.rollValue === 1">
-                CRITICAL MISS!
-            </span>
-        </rolled-amount>
         <ability-mod>Ability Mod: + {{rollDisplay.data.abilityMod}}</ability-mod>
         <proficiency-bonus ng-if="rollDisplay.data.isProficient || rollDisplay.data.saveProficient">
             Proficiency Bonus: + {{rollDisplay.data.proficiencyBonus}}
