@@ -12,7 +12,9 @@
                 class="{{character.class | lowercase}}"
                 character-data="character"></character-card>
         </player-party>
-        <roll-display></roll-display>
+        <roll-display
+            party-characters="tableTop.partyCharacters">
+        </roll-display>
     `;
 
     /* @ngInject */

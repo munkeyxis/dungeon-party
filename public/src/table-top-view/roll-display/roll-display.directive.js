@@ -7,26 +7,26 @@
 
     var template = `
         <character-name>
-            {{tableTop.partyCharacters[rollDisplay.data.rollOptions.characterGuid].name}}
+            {{rollDisplay.character.name}}
         </character-name>
         <roll-type>Rolled: 
             <die-type 
-                ng-repeat="die in rollDisplay.data.rollOptions.diceTypes"
+                ng-repeat="die in rollDisplay.rollOptions.diceTypes"
                 ng-if="die.isSelected">
-                {{rollDisplay.data.rollOptions.quantity}}D{{die.value}} 
+                {{rollDisplay.rollOptions.quantity}}D{{die.value}} 
                 (<roll-result ng-repeat="result in die.rollResults track by $index">{{result}}, </roll-result>), 
             </die-type>
         </roll-type>
-        <ability-mod>Ability Mod: + {{rollDisplay.data.abilityMod}}</ability-mod>
-        <proficiency-bonus ng-if="rollDisplay.data.isProficient || rollDisplay.data.saveProficient">
-            Proficiency Bonus: + {{rollDisplay.data.proficiencyBonus}}
+        <ability-mod>Ability Mod: + {{rollDisplay.abilityMod}}</ability-mod>
+        <proficiency-bonus ng-if="rollDisplay.rollOptions.addProficiency || rollDisplay.saveProficient">
+            Proficiency Bonus: + {{rollDisplay.character.proficiencyBonus}}
         </proficiency-bonus>
-        <not-proficient ng-if="!rollDisplay.data.isProficient">
+        <not-proficient ng-if="!rollDisplay.rollOptions.addProficiency">
             Not Proficient
         </not-proficient>
         <roll-total>
             <h3>Total</h3>
-            <h1>{{rollDisplay.data.total}}</h1>
+            <h1>{{rollDisplay.total}}</h1>
         </roll-total>
     `;
 
@@ -37,7 +37,9 @@
             controller: RollDisplayController,
             controllerAs: 'rollDisplay',
             restrict: 'E',
-            scope: false,
+            scope: {
+                party: '=partyCharacters'
+            },
             template: template
         };
         return directive;
@@ -47,9 +49,13 @@
     function RollDisplayController($log, socket) {
         const vm = this;
 
+        vm.character = {};
+
         socket.on('rollResult', data => {
             $log.info('rollResult received', data);
-            vm.data = data;
+            vm.rollOptions = data.rollOptions;
+            vm.character = vm.party[vm.rollOptions.characterGuid];
+            vm.total = data.total;
         });
     }
 })();
