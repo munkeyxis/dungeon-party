@@ -22,7 +22,7 @@
             <ability-mod
                 ng-repeat="stat in rollDisplay.rollOptions.statTypes"
                 ng-if="stat.isSelected">
-                {{stat.name | limitTo: 3}}: {{rollDisplay.character.stats[stat.name].modifier}}
+                <stat-name>{{stat.name | limitTo: 3}}</stat-name>: {{rollDisplay.character.stats[stat.name].modifier}}
             </ability-mod>
         </ability-mods>
         <proficiency-bonus ng-if="rollDisplay.rollOptions.addProficiency || rollDisplay.saveProficient">
