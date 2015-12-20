@@ -31,6 +31,9 @@
         <not-proficient ng-if="!rollDisplay.rollOptions.addProficiency">
             Not Proficient
         </not-proficient>
+        <other-modifiers ng-if="rollDisplay.rollOptions.otherModValue">
+            Other Modifiers: {{rollDisplay.rollOptions.otherModValue}}
+        </other-modifiers>
         <roll-total>
             <h3>Total</h3>
             <h1>{{rollDisplay.total}}</h1>
