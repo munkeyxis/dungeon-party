@@ -17,7 +17,14 @@
                 (<roll-result ng-repeat="result in die.rollResults track by $index">{{result}}, </roll-result>), 
             </die-type>
         </roll-type>
-        <ability-mod>Ability Mod: + {{rollDisplay.abilityMod}}</ability-mod>
+        <ability-mods>
+            Ability Mod: + 
+            <ability-mod
+                ng-repeat="stat in rollDisplay.rollOptions.statTypes"
+                ng-if="stat.isSelected">
+                {{stat.displayName}}: {{rollDisplay.character.stats[stat.name].modifier}}
+            </ability-mod>
+        </ability-mods>
         <proficiency-bonus ng-if="rollDisplay.rollOptions.addProficiency || rollDisplay.saveProficient">
             Proficiency Bonus: + {{rollDisplay.character.proficiencyBonus}}
         </proficiency-bonus>
