@@ -37,8 +37,7 @@
 
         vm.rollOptions = {
             characterGuid: vm.characterGuid,
-            quantity: 1,
-            diceTypes: [{value: 20, isSelected: true}],
+            diceTypes: [{value: 20, isSelected: true, quantity: 1}],
             statTypes: [{name: vm.statName, isSelected: true}],
             otherModValue: 0
         };
